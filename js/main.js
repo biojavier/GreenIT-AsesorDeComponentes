@@ -615,15 +615,15 @@ var controller = (function (jsonDB) {
 			sugerido = vectorDeItems[i].sugerido;
 			if(sugerido == usoSeleccionado){
 				localStorage.setItem(nombreLocalStorage,vectorDeItems[i].nombre);
-				encuentra=true;
-				return parseInt(vectorDeItems[i].precio);
+				encuentra=true;				
+				return ([parseInt(vectorDeItems[i].precio),parseInt(vectorDeItems[i].consumo)]);
 			}else{
 				i++;
 			}
 		}
 		if(!encuentra){
 			localStorage.setItem(nombreLocalStorage,extra);
-			return 0;
+			return ([0,0]);
 		}
 	}
 	
@@ -641,26 +641,44 @@ var controller = (function (jsonDB) {
 			}
 			//para cada componente, recolecto aquel que este recomendado para ese uso seleccionado			
 			costo=0;
+			totalWatts=0;
+			var vec;
 			
-			costo += searchItem(parseInt(jsonDB.producto.cantidadProcesadores),
+			vec = searchItem(parseInt(jsonDB.producto.cantidadProcesadores),
 				jsonDB.producto.procesadores, usoSeleccionado, "procesador", "");
-						
-			costo += searchItem(parseInt(jsonDB.producto.cantidadDiscos),
-				jsonDB.producto.discos, usoSeleccionado, "discoRigido", "");
-				
-			costo += searchItem(parseInt(jsonDB.producto.cantidadFuentes),
-				jsonDB.producto.fuentes, usoSeleccionado, "fuente", "");	
-						
-			costo += searchItem(parseInt(jsonDB.producto.cantidadMemoriasRam),
-				jsonDB.producto.memoriasRam, usoSeleccionado, "memoriaRam", "");	
-						
-			costo += searchItem(parseInt(jsonDB.producto.cantidadPlacasMadre),
-				jsonDB.producto.placasMadre, usoSeleccionado, "placaMadre", "");
+			costo += vec[0];
+			totalWatts += vec[1];
 			
-			costo += searchItem(parseInt(jsonDB.producto.cantidadPlacasVideo),
+			vec = searchItem(parseInt(jsonDB.producto.cantidadDiscos),
+				jsonDB.producto.discos, usoSeleccionado, "discoRigido", "");
+			costo += vec[0];	
+			totalWatts += vec[1];
+			
+			vec = searchItem(parseInt(jsonDB.producto.cantidadFuentes),
+				jsonDB.producto.fuentes, usoSeleccionado, "fuente", "");	
+			costo += vec[0];
+			totalWatts += vec[1];
+			
+			vec = searchItem(parseInt(jsonDB.producto.cantidadMemoriasRam),
+				jsonDB.producto.memoriasRam, usoSeleccionado, "memoriaRam", "");	
+			costo += vec[0];
+			totalWatts += vec[1];
+			
+			vec = searchItem(parseInt(jsonDB.producto.cantidadPlacasMadre),
+				jsonDB.producto.placasMadre, usoSeleccionado, "placaMadre", "");
+			costo += vec[0];
+			totalWatts += vec[1];
+			
+			vec = searchItem(parseInt(jsonDB.producto.cantidadPlacasVideo),
 				jsonDB.producto.placasVideo, usoSeleccionado, "placaVideo", "ninguna");
-							
-			localStorage.setItem("costoTotal",costo);					
+			costo += vec[0];
+			totalWatts += vec[1];
+			localStorage.setItem("costoTotal",costo);
+			//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
+			//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS
+			var res = totalWatts*0.00032;
+			//la funcion toFixed corto el numero en 4 decimales
+			localStorage.setItem("costoWattsTotal",res.toFixed(4));			
 		}else{
 			if(ndd == "Intermedio"){
 				//se cargan los componentes del intermedio

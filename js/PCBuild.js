@@ -31,6 +31,8 @@ var controllerPCBuild = (function (jsonDB) {
 		li.appendChild(document.createTextNode("Costo total: $" + localStorage.getItem("costoTotal")));
 		ul.appendChild(li);
 		
+		var gastoWatts = document.getElementById("gastoWatts").innerHTML = "El gasto monetario en base al consumo de energia de la PC mostrada es de: $" + localStorage.getItem("costoWattsTotal") + " por hora";
+		
 	}
 	
 	irASystemSelectorPrivate = function(){
