@@ -494,42 +494,53 @@ var controller = (function (jsonDB) {
 		//Tipo fuente
 		elemDelDOM = document.getElementById("marcaFuente");
 		elemDelDOM2 = document.getElementById("wattsFuente");	
+		elemDelDOM3 = document.getElementById("fuenteSeleccion");
 		var i = 0;	
 		for(i=0;i<parseInt(jsonDB.producto.cantidadFuentes);i++){
 			var opcion = document.createElement("option");
 			var opcion2 = document.createElement("option");
+			var opcion3 = document.createElement("option");
 			opcion.text = opcion.value = jsonDB.producto.fuentes[i].nombre;
 			elemDelDOM.add(opcion);					
 			opcion2.text = opcion2.value = jsonDB.producto.fuentes[i].descripcion;
 			if(hasValue(elemDelDOM2, opcion2.text)){
 				elemDelDOM2.add(opcion2);
 			}
+			opcion3.text = opcion3.value = jsonDB.producto.fuentes[i].nombre;
+			elemDelDOM3.add(opcion3);		
 		}
 		
 		//Tipo placa madre
 		elemDelDOM = document.getElementById("marcaPlacaMadre");	
 		elemDelDOM2 = document.getElementById("socketPlacaMadre");			
+		elemDelDOM3 = document.getElementById("placaMadreSeleccion");			
 		var i = 0;	
 		for(i=0;i<parseInt(jsonDB.producto.cantidadPlacasMadre);i++){
 			var opcion = document.createElement("option");
 			var opcion2 = document.createElement("option");
+			var opcion3 = document.createElement("option");
 			opcion.text = opcion.value = jsonDB.producto.placasMadre[i].nombre;
 			elemDelDOM.add(opcion);	
 			opcion2.text = opcion2.value = jsonDB.producto.placasMadre[i].socket;
 			if(hasValue(elemDelDOM2, opcion2.text)){
 				elemDelDOM2.add(opcion2);
 			}			
+			opcion3.text = opcion3.value = jsonDB.producto.placasMadre[i].nombre;
+			elemDelDOM3.add(opcion3);
 		}	
 		//Tipo de placa de video
 		elemDelDOM = document.getElementById("marcaPlacaVideo");	
+		elemDelDOM2 = document.getElementById("placaVideoSeleccion");	
 		var i = 0;	
 		for(i=0;i<parseInt(jsonDB.producto.cantidadPlacasVideo);i++){
 			var opcion = document.createElement("option");
+			var opcion2 = document.createElement("option");
 			opcion.text = opcion.value = jsonDB.producto.placasVideo[i].nombre;
 			elemDelDOM.add(opcion);					
+			opcion2.text = opcion2.value = jsonDB.producto.placasVideo[i].nombre;
+			elemDelDOM2.add(opcion2);					
 		}			
-	}		
-	
+	}
 	
 	
 	//-----------------buscadores, uno para cada tipo de elemento
