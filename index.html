@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>System Config Tool</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<style>
+		#mainTitle{ text-align: center;}
+		#help{ font-size: 19px;}
+	</style>
+
+</head>
+<body onload="controller.getElements()">
+	<h1 id="mainTitle">System Selector</h1>
+	<br><br>
+	<span id="help" class="help-block">Seleccione el conocimiento que tiene sobre computadoras</span>
+		<section ng-init="tab = 1">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active:tab === 1 }">
+					<a href ng-click="tab = 1">Principiante</a>
+				</li>
+				<li ng-class="{ active:tab === 2 }">
+					<a href ng-click="tab = 2">Intermedio</a>
+				</li>
+				<li ng-class="{ active:tab === 3 }">
+					<a href ng-click="tab = 3">Avanzado</a>
+				</li>
+			</ul>
+		</section>
+		<div class="form-group" ng-show="tab === 1">
+			<!-- FORMULARIO PARA EL USUARIO PRINCIPIANTE -->
+			<form>
+				<label for="uso">
+					Uso que se le dará al equipo
+				</label><br/>
+				<label for="oficina">
+					<input type="radio" name="uso" value="oficina">
+						Oficina
+				</label><br/>	
+				<label for="diseño grafico">
+					<input type="radio" name="uso" value="diseño">
+						Diseño grafico
+				</label><br/>
+				<label for="hogar">
+					<input type="radio" name="uso" value="hogar">
+						Hogar
+				</label><br/>
+				<label for="juegos">
+					<input type="radio" name="uso" value="juegos">
+						Juegos de alto rendimiento
+				</label><br><br>
+			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Principiante')">Armar una máquina</button>
+			<p class="help-block">Recuerde que esta es una configuración para principiantes, cuando seleccione armar la máquina, 
+			se generará un presupuesto con los componentes que usted seleccionó y se le recomendará especificaciones completas con marcas
+			 para poder realizar un pedido de forma precisa con los correspondientes valores en pesos</p>	
+			</form>
+		</div>
+		
+		
+		<div class="form-group" ng-show="tab === 2">
+			<!-- FORMULARIO PARA EL USUARIO INTERMEDIO -->
+			<form>
+				<h3>Características del equipo</h3>
+				<label for="procesadorMarca"> Modelo procesador </label>
+					<select class="form-control" id="procesadorMarca"  onchange="controller.getDescriptionProcesor()">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<p class="help-block" id="descripcionProcesador"></p>
+				<br/>
+				<label for="marcaRamSeleccion"> Memoria RAM </label><br>
+					<select class="form-control" id="marcaRamSeleccion"  onchange="controller.getDescriptionMemoriaRam()">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<p class="help-block" id="descripcionMemoriaRam"></p>
+				<br/>
+				<label for="discoRigidoSeleccion"> Disco rígido </label><br>
+					<select class="form-control" id="discoRigidoSeleccion"  onchange="controller.getDescriptionDiscoRigido()">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<p class="help-block" id="descripcionDiscoRigido"></p>
+				<br/>
+				<label for="fuenteSeleccion"> Fuente </label><br>
+					<select class="form-control" id="fuenteSeleccion"  onchange="controller.getDescriptionFuente()">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<p class="help-block" id="descripcionFuente"></p>
+				<br/>	
+				<label for="placaMadreSeleccion"> Placa madre </label><br>
+					<select class="form-control" id="placaMadreSeleccion"  onchange="controller.getDescriptionPlacaMadre()">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<p class="help-block" id="descripcionPlacaMadre"></p>
+				<br/>	
+				<label for="placaVideoSeleccion"> Placa de video </label><br>
+					<select class="form-control" id="placaVideoSeleccion"  onchange="controller.getDescriptionPlacaVideo()">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+						<option value="ninguna"> Ninguna </option>
+					</select>
+				<p class="help-block" id="descripcionPlacaVideo"></p>
+				<br/>	
+				
+			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Intermedio')">Armar una máquina</button>
+	
+			</form>
+		</div>	
+		
+		<div class="form-group" ng-show="tab === 3">
+			<!-- FORMULARIO PARA EL USUARIO AVANZADO -->
+			<form>
+				<h3>Características del equipo</h3>
+				<label for="marcaSeleccion">
+					Marca del procesador
+				<div id="marcProcesador" onchange="controller.filtro('marcaProcesador')">
+				</label><br/>
+					<label for="MarcaIntel">
+						<input type="radio" name="marcasRadio" id="Intel" value="intel"/>
+							Intel
+					</label><br/>	
+					<label for="MarcaAMD">
+						<input type="radio" name="marcasRadio" id="Intel" value="AMD"/>
+							AMD
+					</label><br/><br/>
+				</div>
+				<label for="nucleosProcesador"> Cantidad de núcleos </label><br/>
+					<select class="form-control" id="nucleosProcesador" onchange="controller.filtro('cantidadNucleos')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<label for="velocidadProcesador"> Velocidad del procesador </label><br/>
+					<select class="form-control" id="velocidadProcesador" onchange="controller.filtro('velocidadProcesador')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>	
+				<label for="cacheProcesador"> Cache del procesador </label><br/>
+					<select class="form-control" id="cacheProcesador" onchange="controller.filtro('cacheProcesador')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="marcaRamAdvSeleccion">Marca de memoria RAM</label><br/>
+					<select class="form-control" id="marcaRamAdvSeleccion" onchange="controller.filtro('marcaMemoria')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="cantidadMemoriaRam">Cantidad de memoria RAM</label><br/>
+					<select class="form-control" id="cantidadMemoriaRam" onchange="controller.filtro('cantidadMemoria')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="velocidadMemoriaRam">Velocidad de memoria RAM</label><br/>
+					<select class="form-control" id="velocidadMemoriaRam" onchange="controller.filtro('velocidadMemoria')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="marcaDisco">Marca del disco rígido</label><br/>
+					<select class="form-control" id="marcaDisco" onchange="controller.filtro('marcaDisco')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="capacidadDisco">Capacidad del disco rígido</label><br/>
+					<select class="form-control" id="capacidadDisco" onchange="controller.filtro('capacidadDisco')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="tipoDisco">Tipo de disco rígido</label><br/>
+					<select class="form-control" id="tipoDisco" onchange="controller.filtro('tipoDisco')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="cacheDisco">Cache del disco rígido</label><br/>
+					<select class="form-control" id="cacheDisco" onchange="controller.filtro('cacheDisco')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>							
+				<label for="marcaFuente">Marca de la fuente</label><br/>
+					<select class="form-control" id="marcaFuente" onchange="controller.filtro('marcaFuente')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>							
+				<label for="wattsFuente">Watts fuente</label>
+					<select class="form-control" id="wattsFuente" onchange="controller.filtro('wattsFuente')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="marcaPlacaMadre">Marca de placa madre</label>
+					<select class="form-control" id="marcaPlacaMadre" onchange="controller.filtro('marcaPlacaMadre')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>			
+				<label for="socketPlacaMadre">Socket de placa madre</label>
+					<select class="form-control" id="socketPlacaMadre" onchange="controller.filtro('socketPlacaMadre')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<label for="marcaPlacaVideo">Marca de placa de video</label>
+					<select class="form-control" id="marcaPlacaVideo" onchange="controller.filtro('marcaPlacaVideo')">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>		
+				<br>	
+			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Avanzado')">Armar una máquina</button>
+			</form>
+		</div>
+	<script type='text/javascript' src='angular.min.js'></script>
+	<script src="js/db2.json"></script>
+	<script type='text/javascript' src='js/main.js'></script> 		
+	<script type='text/javascript' src='js/PCObject.js'></script> 		
+	<script src="js/jquery/dist/jquery.js"></script>
+</body>
+</html>
+

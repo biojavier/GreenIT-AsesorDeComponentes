@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>System Config Tool</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<style>
+		#mainTitle{ text-align: center;}
+		#help{ font-size: 19px;}
+	</style>
+
+</head>
+<body onload="controllerPCBuild.mostrarMaquina()">
+	<h1 id="mainTitle">Su selección de componentes</h1>
+	<br><br>
+	<span class="help-block">Se le ofrece la siguiente configuración:</span>
+		
+		<ul id="PCBuildComponentes">			
+		</ul>
+		
+	  <button class="btn btn-default" onclick="controllerPCBuild.irASystemSelector()">Volver al System Selector</button>
+	
+	<script type='text/javascript' src='angular.min.js'></script>
+	<script src="js/db2.json"></script>
+	<script type='text/javascript' src='js/PCBuild.js'></script> 		
+	<script src="js/jquery/dist/jquery.js"></script>
+</body>
+</html>
+

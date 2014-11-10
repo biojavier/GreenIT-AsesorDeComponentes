@@ -1,0 +1,56 @@
+var datos = {
+	"producto": {
+		"cantidadDiscos":"7",
+		"discos": [
+			{"nombre":"SEAGATE 1TB", "consumo":"6.19", "capacidad":"1 TB", "tipo":"SATA 3", "cache":"64 MB", "sugerido":"null", "precio":"1175"},
+			{"nombre":"SEAGATE 500GB", "consumo":"6.19", "capacidad":"500 GB", "tipo":"SATA 3", "cache":"16 MB", "sugerido":"null", "precio":"979"},
+			{"nombre":"TOSHIBA 1 TB", "consumo":"6.4", "capacidad":"1 TB", "tipo":"SATA 3", "cache":"32 MB", "sugerido":"oficina", "precio":"1119"},
+			{"nombre":"WESTERN DIGITAL CAVIAR PURPLE", "consumo":"3.3", "capacidad":"1 TB", "tipo":"SATA 3", "cache":" 64 MB", "sugerido":"null", "precio":"1231"},
+			{"nombre":"WESTERN DIGITAL CAVIAR BLUE", "consumo":"6.8", "capacidad":"1 TB", "tipo":"SATA 3", "cache":"64 MB", "sugerido":"hogar", "precio":"1242"},
+			{"nombre":"WESTERN DIGITAL CAVIAR BLACK", "consumo":"6.8", "capacidad":"1 TB", "tipo":"SATA 3", "cache":"64 MB", "sugerido":"juegos", "precio":"1689"},
+			{"nombre":"SAMSUNG 840 PRO SSD", "consumo":"1.4", "capacidad":"256 GB", "tipo":"SATA 3", "cache":"64 MB", "sugerido":"diseño", "precio":"3100"}
+		],
+		"cantidadFuentes":"5",
+		"fuentes": [
+			{"nombre":"ANTEC VP450P", "consumo":"450", "descripcion":"450W", "sugerido":"oficina", "precio":"806"},
+			{"nombre":"COOLER MASTER EXTREME POWER PLUS", "consumo":"600", "descripcion":"600W", "sugerido":"null", "precio":"1499"},
+			{"nombre":"COOLER MASTER EXTREME POWER PLUS 550", "consumo":"550", "descripcion":"550W", "sugerido":"hogar", "precio":"1300"},
+			{"nombre":"NZXT HALE82 550", "consumo":"550", "descripcion":"550W", "sugerido":"diseño", "precio":"1650"},
+			{"nombre":"CORSAIR CX600M", "consumo":"600", "descripcion":"600W", "sugerido":"juegos", "precio":"1750"}
+		],
+		"cantidadMemoriasRam":"4",
+		"memoriasRam": [
+			{"nombre":"KINGSTON Value RAM", "consumo":"1.05", "tipo":"DDR3", "capacidad":"2GB", "velocidad":"1333 Ghz", "sugerido":"oficina", "precio":"481"},
+			{"nombre":"KINGSTON HyperX", "consumo":"2.1", "tipo":"DDR3", "capacidad":"4GB", "velocidad":"1333 Ghz", "sugerido":"hogar", "precio":"895"},
+			{"nombre":"KINGSTON HyperX Fury", "consumo":"2.1", "tipo":"DDR3", "capacidad":"8GB", "velocidad":"1600 Ghz", "sugerido":"diseño", "precio":"1500"},
+			{"nombre":"GSKILL SNIPER", "consumo":"2.1", "tipo":"DDR3", "capacidad":"8GBx2", "velocidad":"1866 Ghz", "sugerido":"juegos", "precio":"2480"}
+		],
+		"cantidadProcesadores":"6",
+		"procesadores": [
+			{"nombre":"APU AM1 AMD ATHLON 5150", "consumo":"25", "nucleos":"4", "velocidad":"1.6 GHZ", "cache":"2MB", "sugerido":"null", "precio":"856", "marca":"AMD"},
+			{"nombre":"APU AM1 AMD SEMPRON 3850", "consumo":"25", "nucleos":"4", "velocidad":"1.3 GHZ", "cache":"2MB", "sugerido":"null", "precio":"638", "marca":"AMD"},
+			{"nombre":"APU FM2 AMD A4 6300", "consumo":"27", "nucleos":"2", "velocidad":"3.7 GHZ", "cache":"2MB", "sugerido":"hogar", "precio":"700", "marca":"AMD"},
+			{"nombre":"1150 INTEL CORE I3-4130", "consumo":"54", "nucleos":"4", "velocidad":"3.4 GHZ", "cache":"3MB", "sugerido":"oficina", "precio":"2014", "marca":"intel"},
+			{"nombre":"1150 INTEL CORE I7-4770 QUAD-CORE", "consumo":"84", "nucleos":"4", "velocidad":"3.4 GHZ", "cache":"8MB", "sugerido":"diseño", "precio":"5594", "marca":"intel"},
+			{"nombre":"1150 INTEL CORE I5-4670 QUAD-CORE", "consumo":"76", "nucleos":"4", "velocidad":"3.4 GHZ", "cache":"8MB", "sugerido":"juegos", "precio":"4600", "marca":"intel"}
+		],
+		"cantidadPlacasMadre":"7",
+		"placasMadre": [
+			{"nombre":"ASROCK H81M-DGS", "consumo":"54", "socket":"1150", "sugerido":"null", "precio":"891"},
+			{"nombre":"ASUS B85M-G", "consumo":"54", "socket":"1150", "sugerido":"null", "precio":"1224"},
+			{"nombre":"ASROCK AM1B-M", "consumo":"54", "socket":"AM1", "sugerido":"oficina", "precio":"548"},
+			{"nombre":"GIGABYTE H87N-WIFI MINI-ITX", "consumo":"54", "socket":"1150", "sugerido":"null", "precio":"1998"},
+			{"nombre":"ASUS Z97-A", "consumo":"61", "socket":"1150", "sugerido":"diseño", "precio":"2650"},
+			{"nombre":"GIGABYTE Z97 GAMING", "consumo":"75", "socket":"1150", "sugerido":"juegos", "precio":"2600"},
+			{"nombre":"ASUS A55BM-A", "consumo":"72", "socket":"FM2", "sugerido":"hogar", "precio":"1100"}
+		],
+		"cantidadPlacasVideo":"5",
+		"placasVideo":[
+			{"nombre":"AMD HD 6450 SILENT ASUS DDR3", "consumo":"86", "descripcion":"PCI-E 1GB", "sugerido":"null", "precio":"580"},
+			{"nombre":"AMD HD 6450 XFX DDR3", "consumo":"86", "descripcion":"PCI-E 1GB", "sugerido":"null", "precio":"617"},
+			{"nombre":"GEFORCE GT 610 MSI DDR3", "consumo":"86", "descripcion":"PCI-E 1GB", "sugerido":"null", "precio":"722"},
+			{"nombre":"QUADRO K2000", "consumo":"120", "descripcion":"PCI-E 2GB GDDR5", "sugerido":"diseño", "precio":"8500"},
+			{"nombre":"GEFORCE GTX 770", "consumo":"280", "descripcion":"PCI-E 2GB GDDR5", "sugerido":"juegos", "precio":"6000"}
+		]
+	}
+}
