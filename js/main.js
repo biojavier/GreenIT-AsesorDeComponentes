@@ -539,7 +539,19 @@ var controller = (function (jsonDB) {
 			elemDelDOM.add(opcion);					
 			opcion2.text = opcion2.value = jsonDB.producto.placasVideo[i].nombre;
 			elemDelDOM2.add(opcion2);					
-		}			
+		}
+		//Dinero a invertir -- seccion principiante
+		elemDelDOM = document.getElementById("dineroAInvertir");		
+		//vamos a poner solo 3 rangos
+			var opcion = document.createElement("option");			
+			opcion.text = "Menos de 6000";
+			elemDelDOM.add(opcion);
+			opcion = document.createElement("option");			
+			opcion.text = "Menos de 8000";
+			elemDelDOM.add(opcion);
+			opcion = document.createElement("option");			
+			opcion.text = "De 8000 en adelante";
+			elemDelDOM.add(opcion);		
 	}
 	
 	
@@ -612,13 +624,16 @@ var controller = (function (jsonDB) {
 	//recolector de datos de la máquina a armar
 	miMaquinaPrivate = function(){
 		localStorage.setItem("procesador",document.getElementById("procesadorMarca").value);
-	  localStorage.setItem("memoriaRam",document.getElementById("marcaRamSeleccion").value);
+	    localStorage.setItem("memoriaRam",document.getElementById("marcaRamSeleccion").value);
 		localStorage.setItem("discoRigido",document.getElementById("discoRigidoSeleccion").value);
 		localStorage.setItem("fuente",document.getElementById("fuenteSeleccion").value);
 		localStorage.setItem("placaMadre",document.getElementById("placaMadreSeleccion").value);
 		localStorage.setItem("placaVideo",document.getElementById("placaVideoSeleccion").value);
 	}
 	
+	//searchItem busca en un conjunto de elementos aquel del cual el uso sugerido matchea 
+	//con el uso Seleccionado que se busca, lo almacena el el LocalStorage y retorna un array 
+	//de2 elemntos - el primero es el costo del item - y - el segundo es el consumo del item -	
 	searchItem = function(cantItems, vectorDeItems, usoSeleccionado, nombreLocalStorage, extra){		
 		var i=0;
 		encuentra=false;					
@@ -685,10 +700,28 @@ var controller = (function (jsonDB) {
 			costo += vec[0];
 			totalWatts += vec[1];
 			localStorage.setItem("costoTotal",costo);
+			
+			//Segun el costo total de la maquina y lo que el usuario esta dispuesto a invertir
+			//se chequea si al usuario le alcanza el dinero para pagar la PC
+			var dineroAInvertir = document.getElementById("dineroAInvertir").value;
+			if(dineroAInvertir == "Menos de 6000"){
+				if(costo <= 6000) 
+				{localStorage.setItem("alcanzaElDinero","SI");}else
+				{localStorage.setItem("alcanzaElDinero","NO");}
+			}else{
+				if(dineroAInvertir == "Menos de 8000"){
+					if(costo <= 8000) 
+					{localStorage.setItem("alcanzaElDinero","SI");}else
+					{localStorage.setItem("alcanzaElDinero","NO");}
+				}else{
+					localStorage.setItem("alcanzaElDinero","SI");					
+				}			
+			}
+			
 			//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
 			//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS
 			var res = totalWatts*0.00032;
-			//la funcion toFixed corto el numero en 4 decimales
+			//la funcion toFixed corta el numero en 4 decimales
 			localStorage.setItem("costoWattsTotal",res.toFixed(4));			
 		}else{
 			if(ndd == "Intermedio"){

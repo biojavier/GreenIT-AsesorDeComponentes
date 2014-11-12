@@ -48,6 +48,11 @@
 					<input type="radio" name="uso" value="juegos">
 						Juegos de alto rendimiento
 				</label><br><br>
+				<label for="dineroAInvertirLabel"> Rango de dinero a invertir (en Pesos): </label>
+					<select class="form-control" id="dineroAInvertir"  onchange="">					
+						<option disabled selected> -- seleccionar una opción -- </option>
+					</select>
+				<br><br>
 			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Principiante')">Armar una máquina</button>
 			<p class="help-block">Recuerde que esta es una configuración para principiantes, cuando seleccione armar la máquina, 
 			se generará un presupuesto con los componentes que usted seleccionó y se le recomendará especificaciones completas con marcas
