@@ -26,12 +26,13 @@ var controllerPCBuild = (function (jsonDB) {
 			li.appendChild(document.createTextNode("Placa de video: " + localStorage.getItem("placaVideo")));
 			ul.appendChild(li);
 			var li = document.createElement("li");
-			li.appendChild(document.createTextNode("Aca falto el Gabo :P gabinete, aunq no es muy util para el Green IT"));
+			li.appendChild(document.createTextNode("Dado que no pesee consumo energetico, el gabinete se deja a eleccion del usuario (ver compatibilidad con motherboard)"));
 			ul.appendChild(li);
 			var li = document.createElement("li");
 			li.appendChild(document.createTextNode("Costo total: $" + localStorage.getItem("costoTotal")));
 			ul.appendChild(li);
-			
+            
+	        document.getElementById("consumoWatts").innerHTML = "El consumo de energia de la PC mostrada es de: " + localStorage.getItem("wattsTotal") + " watts";		
 			document.getElementById("gastoWatts").innerHTML = "El gasto monetario en base al consumo de energia de la PC mostrada es de: $" + localStorage.getItem("costoWattsTotal") + " por hora";
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";

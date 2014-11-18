@@ -621,16 +621,6 @@ var controller = (function (jsonDB) {
 	
 	//--------------------------fin de buscadores
 		
-	//recolector de datos de la máquina a armar
-	miMaquinaPrivate = function(){
-		localStorage.setItem("procesador",document.getElementById("procesadorMarca").value);
-	    localStorage.setItem("memoriaRam",document.getElementById("marcaRamSeleccion").value);
-		localStorage.setItem("discoRigido",document.getElementById("discoRigidoSeleccion").value);
-		localStorage.setItem("fuente",document.getElementById("fuenteSeleccion").value);
-		localStorage.setItem("placaMadre",document.getElementById("placaMadreSeleccion").value);
-		localStorage.setItem("placaVideo",document.getElementById("placaVideoSeleccion").value);
-	}
-	
 	//searchItem busca en un conjunto de elementos aquel del cual el uso sugerido matchea 
 	//con el uso Seleccionado que se busca, lo almacena el el LocalStorage y retorna un array 
 	//de2 elemntos - el primero es el costo del item - y - el segundo es el consumo del item -	
@@ -648,9 +638,28 @@ var controller = (function (jsonDB) {
 			}
 		}
 		if(!encuentra){
+			//sucede con las placas de video integradas, hay q poner "ninguna" y el costo y consumo en 0
 			localStorage.setItem(nombreLocalStorage,extra);
 			return ([0,0]);
 		}
+	}
+	
+	searchItemIntermedio = function(vectorDeItems, buscado){		
+		console.log(vectorDeItems);
+		var i=0;		
+		//si no selecciono nada...
+		if(buscado == " -- seleccionar una opción -- "){			
+			console.log(buscado);
+			return([0,0]);
+		}
+		//---------------------------
+		for(i=1; i<vectorDeItems.length; i++){
+			//console.log("Nombre = "+vectorDeItems[i].nombre);			
+			elem = vectorDeItems[i];
+			if(elem.nombre == buscado){
+				return ([parseInt(elem.precio),parseInt(elem.consumo)]);
+			}
+		}			
 	}
 	
 	irAPCBuildPrivate = function(nivelDeDificultad){	
@@ -700,7 +709,7 @@ var controller = (function (jsonDB) {
 			costo += vec[0];
 			totalWatts += vec[1];
 			localStorage.setItem("costoTotal",costo);
-			
+			localStorage.setItem("wattsTotal",totalWatts);
 			//Segun el costo total de la maquina y lo que el usuario esta dispuesto a invertir
 			//se chequea si al usuario le alcanza el dinero para pagar la PC
 			var dineroAInvertir = document.getElementById("dineroAInvertir").value;
@@ -726,10 +735,48 @@ var controller = (function (jsonDB) {
 		}else{
 			if(ndd == "Intermedio"){
 				//se cargan los componentes del intermedio
-				miMaquinaPrivate();
+				//dado que en estos casos no importa el precio
+				localStorage.setItem("alcanzaElDinero","SI"); 
+				//----
+				precioTotal = 0;
+				wattsTotal = 0;
+				var vec;
+				localStorage.setItem("procesador",document.getElementById("procesadorMarca").value);
+				vec = searchItemIntermedio(jsonDB.producto.procesadores,document.getElementById("procesadorMarca").value);
+				precioTotal += vec[0];
+				wattsTotal += vec[1];
+				localStorage.setItem("memoriaRam",document.getElementById("marcaRamSeleccion").value);
+				vec = searchItemIntermedio(jsonDB.producto.memoriasRam,document.getElementById("marcaRamSeleccion").value);
+				precioTotal += vec[0];
+				wattsTotal += vec[1];
+				localStorage.setItem("discoRigido",document.getElementById("discoRigidoSeleccion").value);
+				vec = searchItemIntermedio(jsonDB.producto.discos,document.getElementById("discoRigidoSeleccion").value);
+				precioTotal += vec[0];
+				wattsTotal += vec[1];
+				localStorage.setItem("fuente",document.getElementById("fuenteSeleccion").value);
+				vec = searchItemIntermedio(jsonDB.producto.fuentes,document.getElementById("fuenteSeleccion").value);
+				precioTotal += vec[0];
+				wattsTotal += vec[1];
+				localStorage.setItem("placaMadre",document.getElementById("placaMadreSeleccion").value);
+				vec = searchItemIntermedio(jsonDB.producto.placasMadre,document.getElementById("placaMadreSeleccion").value);
+				precioTotal += vec[0];
+				wattsTotal += vec[1];
+				localStorage.setItem("placaVideo",document.getElementById("placaVideoSeleccion").value);
+				vec = searchItemIntermedio(jsonDB.producto.placasVideo,document.getElementById("placaVideoSeleccion").value);
+				precioTotal += vec[0];
+				wattsTotal += vec[1];
+				
+				localStorage.setItem("costoTotal",precioTotal);
+				localStorage.setItem("wattsTotal",wattsTotal);
+				//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
+				//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS				
+				var res = wattsTotal*0.00032;
+				//la funcion toFixed corta el numero en 4 decimales
+				localStorage.setItem("costoWattsTotal",res.toFixed(4));			
+				
 			}else{
 				//aca se cargarían los componentes para el avanzado
-				
+				localStorage.setItem("alcanzaElDinero","SI");
 			}
 		}
 		window.location = "./PCBuild.html";		

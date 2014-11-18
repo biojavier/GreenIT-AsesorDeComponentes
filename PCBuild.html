@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app>
 <head>
 	<title>System Config Tool</title>
@@ -10,15 +10,16 @@
 
 </head>
 <body onload="controllerPCBuild.mostrarMaquina()">
-	<h1 id="mainTitle">Su selección de componentes</h1>
+	<h1 id="mainTitle">Su selecci&oacute;n de componentes</h1>
 	<br><br>
-	<span class="help-block">Se le ofrece la siguiente configuración:</span>
+	<span class="help-block">Se le ofrece la siguiente configuraci&oacute;n:</span>
 		
 		<ul id="PCBuildComponentes">			
 		</ul>
 		
 	  <button class="btn btn-default" onclick="controllerPCBuild.irASystemSelector()">Volver al System Selector</button>
 	<br/>
+        <span class="help-block" id="consumoWatts"></span>
 		<span class="help-block" id="gastoWatts"></span>
 		<span class="help-block" id="mensajeDeDineroInsuficiente"></span>
 		

@@ -12,11 +12,11 @@ var datos = {
 		],
 		"cantidadFuentes":"5",
 		"fuentes": [
-			{"nombre":"ANTEC VP450P", "consumo":"450", "descripcion":"450W", "sugerido":"oficina", "precio":"806"},
-			{"nombre":"COOLER MASTER EXTREME POWER PLUS", "consumo":"600", "descripcion":"600W", "sugerido":"null", "precio":"1499"},
-			{"nombre":"COOLER MASTER EXTREME POWER PLUS 550", "consumo":"550", "descripcion":"550W", "sugerido":"hogar", "precio":"1300"},
-			{"nombre":"NZXT HALE82 550", "consumo":"550", "descripcion":"550W", "sugerido":"diseño", "precio":"1650"},
-			{"nombre":"CORSAIR CX600M", "consumo":"600", "descripcion":"600W", "sugerido":"juegos", "precio":"1750"}
+			{"nombre":"ANTEC VP450P", "consumo":"10", "descripcion":"450W", "sugerido":"oficina", "precio":"806"},
+			{"nombre":"COOLER MASTER EXTREME POWER PLUS", "consumo":"10", "descripcion":"600W", "sugerido":"null", "precio":"1499"},
+			{"nombre":"COOLER MASTER EXTREME POWER PLUS 550", "consumo":"10", "descripcion":"550W", "sugerido":"hogar", "precio":"1300"},
+			{"nombre":"NZXT HALE82 550", "consumo":"10", "descripcion":"550W", "sugerido":"diseño", "precio":"1650"},
+			{"nombre":"CORSAIR CX600M", "consumo":"10", "descripcion":"600W", "sugerido":"juegos", "precio":"1750"}
 		],
 		"cantidadMemoriasRam":"4",
 		"memoriasRam": [
