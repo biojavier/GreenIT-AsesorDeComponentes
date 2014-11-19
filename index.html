@@ -53,6 +53,20 @@
 						<option disabled selected> -- seleccionar una opción -- </option>
 					</select>
 				<br><br>
+				Cantidad de horas que utilizará al equpo
+				</label><br/>
+				<label for="entre4y6">
+					<input type="radio" name="horasPrincipiante" value="entre 4 y 6">
+						Entre 4 y 6
+				</label><br/>	
+				<label for="entre6y8">
+					<input type="radio" name="horasPrincipiante" value="entre 6 y 8">
+						Entre 6 y 8
+				</label><br/>
+				<label for="entre8y10">
+					<input type="radio" name="horasPrincipiante" value="entre 8 y 10">
+						Entre 8 y 10
+				</label><br/> 
 			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Principiante')">Armar una máquina</button>
 			<p class="help-block">Recuerde que esta es una configuración para principiantes, cuando seleccione armar la máquina, 
 			se generará un presupuesto con los componentes que usted seleccionó y se le recomendará especificaciones completas con marcas
@@ -102,9 +116,15 @@
 					</select>
 				<p class="help-block" id="descripcionPlacaVideo"></p>
 				<br/>	
-				
+       	<label for="horasDeUsoIntermedio">
+					Horas de uso que se le dara a la máquina
+				<div id="horasDeUsoIntermedio">
+				</label><br/>
+					<label for="horasDeUso5"><input type="radio" name="horasDeUsoIntermedio" id="5" value="5"/> De 4 a 6 horas diarias </label><br/>	
+					<label for="horasDeUso7"><input type="radio" name="horasDeUsoIntermedio" id="7" value="7"/> De 6 a 8 horas diarias </label><br/>	
+					<label for="horasDeUso9"><input type="radio" name="horasDeUsoIntermedio" id="9" value="9"/> De 8 a 10 horas diarias </label><br/>	
+				</div>				
 			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Intermedio')">Armar una máquina</button>
-	
 			</form>
 		</div>	
 		
@@ -186,6 +206,14 @@
 						<option disabled selected> -- seleccionar una opción -- </option>
 					</select>		
 				<br>	
+				<label for="horasDeUsoAvanzado">
+					Horas de uso que se le dara a la máquina
+				<div id="horasDeUsoAvanzado">
+				</label><br/>
+					<label for="horasDeUso5"><input type="radio" name="horasDeUsoAvanzado" id="5" value="5"/> De 4 a 6 horas diarias </label><br/>	
+					<label for="horasDeUso7"><input type="radio" name="horasDeUsoAvanzado" id="7" value="7"/> De 6 a 8 horas diarias </label><br/>	
+					<label for="horasDeUso9"><input type="radio" name="horasDeUsoAvanzado" id="9" value="9"/> De 8 a 10 horas diarias </label><br/>	
+				</div>
 			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Avanzado')">Armar una máquina</button>
 			</form>
 		</div>
