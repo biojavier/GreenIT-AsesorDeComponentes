@@ -736,8 +736,8 @@ var controller = (function (jsonDB) {
 			if(ndd == "Intermedio"){
 			  var pc = new PC();
 				pc.cargarDatosIntermedio(jsonDB);
-        console.log("arma la maquina");
-        localStorage.setItem("alcanzaElDinero","SI")
+                console.log("arma la maquina");
+                localStorage.setItem("alcanzaElDinero","SI")
 				localStorage.setItem("mipc",JSON.stringify(pc));
 			}else{
 				var pc = new PC();

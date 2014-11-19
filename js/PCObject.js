@@ -54,8 +54,8 @@ function PC() {
 				this.procesadorVelocidad = jsonDB.producto.procesadores[i].velocidad;
 				this.procesadorCache = jsonDB.producto.procesadores[i].cache;
 				this.procesadorPrecio = jsonDB.producto.procesadores[i].precio;
-				this.costoTotal += jsonDB.producto.procesadores[i].precio;
-				this.wattsTotal += jsonDB.producto.procesadores[i].consumo;
+				this.costoTotal += parseInt(jsonDB.producto.procesadores[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.procesadores[i].consumo);
 			}else{
 				i++;
 			}
@@ -74,8 +74,8 @@ function PC() {
 				this.memoriaTipo = jsonDB.producto.memoriasRam[i].tipo;
 				this.memoriaCapacidad = jsonDB.producto.memoriasRam[i].capacidad;
 				this.memoriaPrecio = jsonDB.producto.memoriasRam[i].precio;
-				this.costoTotal += jsonDB.producto.memoriasRam[i].precio;
-				this.wattsTotal += jsonDB.producto.memoriasRam[i].consumo;
+				this.costoTotal += parseInt(jsonDB.producto.memoriasRam[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.memoriasRam[i].consumo);
 			}else{
 				i++;
 			}			
@@ -95,8 +95,8 @@ function PC() {
 				this.discoTipo = jsonDB.producto.discos[i].tipo;
 				this.discoCache = jsonDB.producto.discos[i].cache;
 				this.discoPrecio = jsonDB.producto.discos[i].precio;
-				this.costoTotal += jsonDB.producto.discos[i].precio;
-				this.wattsTotal += jsonDB.producto.discos[i].consumo;
+				this.costoTotal += parseInt(jsonDB.producto.discos[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.discos[i].consumo);
 			}else{
 				i++;
 			}			
@@ -113,8 +113,8 @@ function PC() {
 				this.fuenteConsumo = jsonDB.producto.fuentes[i].consumo;
 				this.fuenteDescripcion = jsonDB.producto.fuentes[i].descripcion;
 				this.fuentePrecio = jsonDB.producto.fuentes[i].precio;
-				this.costoTotal += jsonDB.producto.fuentes[i].precio;
-				this.wattsTotal += jsonDB.producto.fuentes[i].consumo;
+				this.costoTotal += parseInt(jsonDB.producto.fuentes[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.fuentes[i].consumo);
 			}else{
 				i++;
 			}			
@@ -130,8 +130,8 @@ function PC() {
 				this.placaMadreConsumo = jsonDB.producto.placasMadre[i].consumo;
 				this.placaMadreSocket = jsonDB.producto.placasMadre[i].socket;
 				this.placaMadrePrecio = jsonDB.producto.placasMadre[i].precio;
-				this.costoTotal += jsonDB.producto.placasMadre[i].precio;
-				this.wattsTotal += jsonDB.producto.placasMadre[i].consumo;
+				this.costoTotal += parseInt(jsonDB.producto.placasMadre[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.placasMadre[i].consumo);
 			}else{
 				i++;
 			}			
@@ -147,8 +147,8 @@ function PC() {
 				this.placaVideoConsumo = jsonDB.producto.placasVideo[i].consumo;
 				this.placaVideoDescripcion = jsonDB.producto.placasVideo[i].dsecripcion;
 				this.placaVideoPrecio = jsonDB.producto.placasVideo[i].precio;
-				this.costoTotal += jsonDB.producto.placasVideo[i].precio;
-				this.wattsTotal += jsonDB.producto.placasVideo[i].consumo;
+				this.costoTotal += parseInt(jsonDB.producto.placasVideo[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.placasVideo[i].consumo);
 			}else{
 				i++;
 			}			
@@ -174,9 +174,9 @@ function PC() {
 		this.setPlacaVideo("placaVideoSeleccion", jsonDB);
 		//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
 		//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS				
-		alert(this.wattsTotal);
-		alert(this.wattsTotal*0.00032);
-		this.costoWattsTotal = (this.wattsTotal*0.00032).toFixed(4);
+		alert("watts total "+this.wattsTotal);
+		alert("watts total por 0.32 "+(this.wattsTotal*0.00032).toFixed(4));
+		this.costoWattsTotal = ((this.wattsTotal)*0.00032).toFixed(4);
   }		
 	
 	PC.prototype.cargarDatosAvanzado = function(jsonDB){
@@ -197,6 +197,6 @@ function PC() {
 		this.setPlacaVideo("marcaPlacaVideo", jsonDB);
 		//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
 		//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS				
-		this.costoWattsTotal = (this.wattsTotal*0.00032).toFixed(4);
+		this.costoWattsTotal = (parseInt(this.wattsTotal)*0.00032).toFixed(4);
 	}
 }
