@@ -121,7 +121,7 @@ var controller = (function (jsonDB) {
 				removeOptions(document.getElementById("velocidadProcesador"));
 				var i = 0;	
 				for(i=0;i<parseInt(jsonDB.producto.cantidadProcesadores);i++){
-					if(jsonDB.producto.procesadores[i].marca == marcaSeleccionada){
+					if(jsonDB.producto.procesadores[i].cache == cacheProcesador){
 						var opcion2 = document.createElement("option");
 						var opcion3 = document.createElement("option");
 						console.log("entroo");
@@ -342,7 +342,7 @@ var controller = (function (jsonDB) {
 					removeOptions(document.getElementById("wattsFuente"));
 					var i = 0;	
 					for(i=0;i<parseInt(jsonDB.producto.cantidadFuentes);i++){
-						if(jsonDB.producto.discos[i].nombre == marcaFuente){
+						if(jsonDB.producto.fuente[i].nombre == marcaFuente){
 							var opcion2 = document.createElement("option");
 							opcion2.text = opcion2.value = jsonDB.producto.fuentes[i].descripcion;
 							if(hasValue(elemDelDOM2, opcion2.text)){
@@ -386,7 +386,7 @@ var controller = (function (jsonDB) {
 					break;
 				
 				case 'socketPlacaMadre':
-					socketPlacaMadre = document.getElementById("socketPlacaMadre");		
+					socketPlacaMadre = document.getElementById("socketPlacaMadre").value;		
 					elemDelDOM = document.getElementById("marcaPlacaMadre");	
 					removeOptions(document.getElementById("marcaPlacaMadre"));		
 					var i = 0;	
@@ -734,51 +734,19 @@ var controller = (function (jsonDB) {
 			localStorage.setItem("costoWattsTotal",res.toFixed(4));			
 		}else{
 			if(ndd == "Intermedio"){
-				//se cargan los componentes del intermedio
-				//dado que en estos casos no importa el precio
-				localStorage.setItem("alcanzaElDinero","SI"); 
-				//----
-				precioTotal = 0;
-				wattsTotal = 0;
-				var vec;
-				localStorage.setItem("procesador",document.getElementById("procesadorMarca").value);
-				vec = searchItemIntermedio(jsonDB.producto.procesadores,document.getElementById("procesadorMarca").value);
-				precioTotal += vec[0];
-				wattsTotal += vec[1];
-				localStorage.setItem("memoriaRam",document.getElementById("marcaRamSeleccion").value);
-				vec = searchItemIntermedio(jsonDB.producto.memoriasRam,document.getElementById("marcaRamSeleccion").value);
-				precioTotal += vec[0];
-				wattsTotal += vec[1];
-				localStorage.setItem("discoRigido",document.getElementById("discoRigidoSeleccion").value);
-				vec = searchItemIntermedio(jsonDB.producto.discos,document.getElementById("discoRigidoSeleccion").value);
-				precioTotal += vec[0];
-				wattsTotal += vec[1];
-				localStorage.setItem("fuente",document.getElementById("fuenteSeleccion").value);
-				vec = searchItemIntermedio(jsonDB.producto.fuentes,document.getElementById("fuenteSeleccion").value);
-				precioTotal += vec[0];
-				wattsTotal += vec[1];
-				localStorage.setItem("placaMadre",document.getElementById("placaMadreSeleccion").value);
-				vec = searchItemIntermedio(jsonDB.producto.placasMadre,document.getElementById("placaMadreSeleccion").value);
-				precioTotal += vec[0];
-				wattsTotal += vec[1];
-				localStorage.setItem("placaVideo",document.getElementById("placaVideoSeleccion").value);
-				vec = searchItemIntermedio(jsonDB.producto.placasVideo,document.getElementById("placaVideoSeleccion").value);
-				precioTotal += vec[0];
-				wattsTotal += vec[1];
-				
-				localStorage.setItem("costoTotal",precioTotal);
-				localStorage.setItem("wattsTotal",wattsTotal);
-				//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
-				//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS				
-				var res = wattsTotal*0.00032;
-				//la funcion toFixed corta el numero en 4 decimales
-				localStorage.setItem("costoWattsTotal",res.toFixed(4));			
-				
+			  var pc = new PC();
+				pc.cargarDatosIntermedio(jsonDB);
+        console.log("arma la maquina");
+        localStorage.setItem("alcanzaElDinero","SI")
+				localStorage.setItem("mipc",JSON.stringify(pc));
 			}else{
-				//aca se cargarían los componentes para el avanzado
-				localStorage.setItem("alcanzaElDinero","SI");
+				var pc = new PC();
+				pc.cargarDatosAvanzado(jsonDB);
+				localStorage.setItem("alcanzaElDinero","SI")
+				localStorage.setItem("mipc",JSON.stringify(pc));
 			}
 		}
+		console.log("redir");
 		window.location = "./PCBuild.html";		
 	}
 	
