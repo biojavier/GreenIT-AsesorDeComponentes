@@ -29,7 +29,7 @@ var controllerPCBuild = (function (jsonDB) {
             li.appendChild(document.createTextNode("Placa de video: " + mipc.placaVideoNombre));
             ul.appendChild(li);
             var li = document.createElement("li");
-            li.appendChild(document.createTextNode("Aca falto el Gabo :P gabinete, aunq no es muy util para el Green IT"));
+            li.appendChild(document.createTextNode("Dado que el gabinete no consume energia se lo deja a eleccion del usuario (ver compatibilidad con motherboard)"));
             ul.appendChild(li);
             var li = document.createElement("li");
             li.appendChild(document.createTextNode("Costo total: $" + parseInt(mipc.costoTotal)));

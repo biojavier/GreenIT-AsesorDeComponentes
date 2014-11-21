@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app>
 <head>
 	<title>System Config Tool</title>
@@ -30,7 +30,7 @@
 			<!-- FORMULARIO PARA EL USUARIO PRINCIPIANTE -->
 			<form>
 				<label for="uso">
-					Uso que se le dará al equipo
+					Uso que se le dara al equipo
 				</label><br/>
 				<label for="oficina">
 					<input type="radio" name="uso" value="oficina">
@@ -38,7 +38,7 @@
 				</label><br/>	
 				<label for="diseño grafico">
 					<input type="radio" name="uso" value="diseño">
-						Diseño grafico
+						Dise&ntilde;o grafico
 				</label><br/>
 				<label for="hogar">
 					<input type="radio" name="uso" value="hogar">
@@ -50,26 +50,20 @@
 				</label><br><br>
 				<label for="dineroAInvertirLabel"> Rango de dinero a invertir (en Pesos): </label>
 					<select class="form-control" id="dineroAInvertir"  onchange="">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<br><br>
-				Cantidad de horas que utilizará al equpo
+				Cantidad de horas que utilizara al equpo
 				</label><br/>
-				<label for="entre4y6">
-					<input type="radio" name="horasPrincipiante" value="entre 4 y 6">
-						Entre 4 y 6
-				</label><br/>	
-				<label for="entre6y8">
-					<input type="radio" name="horasPrincipiante" value="entre 6 y 8">
-						Entre 6 y 8
+				<div id="horasDeUsoPrincipiante">
 				</label><br/>
-				<label for="entre8y10">
-					<input type="radio" name="horasPrincipiante" value="entre 8 y 10">
-						Entre 8 y 10
-				</label><br/> 
-			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Principiante')">Armar una máquina</button>
-			<p class="help-block">Recuerde que esta es una configuración para principiantes, cuando seleccione armar la máquina, 
-			se generará un presupuesto con los componentes que usted seleccionó y se le recomendará especificaciones completas con marcas
+					<label for="horasDeUso5"><input type="radio" name="horasDeUsoPrincipiante" id="5" value="5"/> De 4 a 6 horas diarias </label><br/>	
+					<label for="horasDeUso7"><input type="radio" name="horasDeUsoPrincipiante" id="7" value="7"/> De 6 a 8 horas diarias </label><br/>	
+					<label for="horasDeUso9"><input type="radio" name="horasDeUsoPrincipiante" id="9" value="9"/> De 8 a 10 horas diarias </label><br/>	
+				</div><br/> 
+			  <button type="submit" class="btn btn-default" onclick="controller.irAPCBuild('Principiante')">Armar una maquina</button>
+			<p class="help-block">Recuerde que esta es una configuracion para principiantes, cuando seleccione armar la maquina, 
+			se generara un presupuesto con los componentes que usted selecciono y se le recomendara especificaciones completas con marcas
 			 para poder realizar un pedido de forma precisa con los correspondientes valores en pesos</p>	
 			</form>
 		</div>
@@ -78,46 +72,46 @@
 		<div class="form-group" ng-show="tab === 2">
 			<!-- FORMULARIO PARA EL USUARIO INTERMEDIO -->
 			<form>
-				<h3>Características del equipo</h3>
+				<h3>Caracteristicas del equipo</h3>
 				<label for="procesadorMarca"> Modelo procesador </label>
 					<select class="form-control" id="procesadorMarca"  onchange="controller.getDescriptionProcesor()">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<p class="help-block" id="descripcionProcesador"></p>
 				<br/>
 				<label for="marcaRamSeleccion"> Memoria RAM </label><br>
 					<select class="form-control" id="marcaRamSeleccion"  onchange="controller.getDescriptionMemoriaRam()">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<p class="help-block" id="descripcionMemoriaRam"></p>
 				<br/>
-				<label for="discoRigidoSeleccion"> Disco rígido </label><br>
+				<label for="discoRigidoSeleccion"> Disco rigido </label><br>
 					<select class="form-control" id="discoRigidoSeleccion"  onchange="controller.getDescriptionDiscoRigido()">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<p class="help-block" id="descripcionDiscoRigido"></p>
 				<br/>
 				<label for="fuenteSeleccion"> Fuente </label><br>
 					<select class="form-control" id="fuenteSeleccion"  onchange="controller.getDescriptionFuente()">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<p class="help-block" id="descripcionFuente"></p>
 				<br/>	
 				<label for="placaMadreSeleccion"> Placa madre </label><br>
 					<select class="form-control" id="placaMadreSeleccion"  onchange="controller.getDescriptionPlacaMadre()">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<p class="help-block" id="descripcionPlacaMadre"></p>
 				<br/>	
 				<label for="placaVideoSeleccion"> Placa de video </label><br>
 					<select class="form-control" id="placaVideoSeleccion"  onchange="controller.getDescriptionPlacaVideo()">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 						<option value="ninguna"> Ninguna </option>
 					</select>
 				<p class="help-block" id="descripcionPlacaVideo"></p>
 				<br/>	
        	<label for="horasDeUsoIntermedio">
-					Horas de uso que se le dara a la máquina
+					Horas de uso que se le dara a la maquina
 				<div id="horasDeUsoIntermedio">
 				</label><br/>
 					<label for="horasDeUso5"><input type="radio" name="horasDeUsoIntermedio" id="5" value="5"/> De 4 a 6 horas diarias </label><br/>	
@@ -145,65 +139,65 @@
 							AMD
 					</label><br/><br/>
 				</div>
-				<label for="nucleosProcesador"> Cantidad de núcleos </label><br/>
+				<label for="nucleosProcesador"> Cantidad de nucleos </label><br/>
 					<select class="form-control" id="nucleosProcesador" onchange="controller.filtro('cantidadNucleos')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>
 				<label for="velocidadProcesador"> Velocidad del procesador </label><br/>
 					<select class="form-control" id="velocidadProcesador" onchange="controller.filtro('velocidadProcesador')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>	
 				<label for="cacheProcesador"> Cache del procesador </label><br/>
 					<select class="form-control" id="cacheProcesador" onchange="controller.filtro('cacheProcesador')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="marcaRamAdvSeleccion">Marca de memoria RAM</label><br/>
 					<select class="form-control" id="marcaRamAdvSeleccion" onchange="controller.filtro('marcaMemoria')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="cantidadMemoriaRam">Cantidad de memoria RAM</label><br/>
 					<select class="form-control" id="cantidadMemoriaRam" onchange="controller.filtro('cantidadMemoria')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="velocidadMemoriaRam">Velocidad de memoria RAM</label><br/>
 					<select class="form-control" id="velocidadMemoriaRam" onchange="controller.filtro('velocidadMemoria')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="marcaDisco">Marca del disco rígido</label><br/>
 					<select class="form-control" id="marcaDisco" onchange="controller.filtro('marcaDisco')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="capacidadDisco">Capacidad del disco rígido</label><br/>
 					<select class="form-control" id="capacidadDisco" onchange="controller.filtro('capacidadDisco')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="tipoDisco">Tipo de disco rígido</label><br/>
 					<select class="form-control" id="tipoDisco" onchange="controller.filtro('tipoDisco')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="cacheDisco">Cache del disco rígido</label><br/>
 					<select class="form-control" id="cacheDisco" onchange="controller.filtro('cacheDisco')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>							
 				<label for="marcaFuente">Marca de la fuente</label><br/>
 					<select class="form-control" id="marcaFuente" onchange="controller.filtro('marcaFuente')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>							
 				<label for="wattsFuente">Watts fuente</label>
 					<select class="form-control" id="wattsFuente" onchange="controller.filtro('wattsFuente')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="marcaPlacaMadre">Marca de placa madre</label>
 					<select class="form-control" id="marcaPlacaMadre" onchange="controller.filtro('marcaPlacaMadre')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>			
 				<label for="socketPlacaMadre">Socket de placa madre</label>
 					<select class="form-control" id="socketPlacaMadre" onchange="controller.filtro('socketPlacaMadre')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<label for="marcaPlacaVideo">Marca de placa de video</label>
 					<select class="form-control" id="marcaPlacaVideo" onchange="controller.filtro('marcaPlacaVideo')">					
-						<option disabled selected> -- seleccionar una opción -- </option>
+						<option disabled selected> -- seleccionar una opcion -- </option>
 					</select>		
 				<br>	
 				<label for="horasDeUsoAvanzado">

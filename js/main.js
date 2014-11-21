@@ -732,6 +732,11 @@ var controller = (function (jsonDB) {
 			var res = totalWatts*0.00032;
 			//la funcion toFixed corta el numero en 4 decimales
 			localStorage.setItem("costoWattsTotal",res.toFixed(4));			
+            
+            var pc = new PC();
+            pc.cargarDatosPrincipiante();
+            localStorage.setItem("mipc",JSON.stringify(pc));
+            
 		}else{
 			if(ndd == "Intermedio"){
 			  var pc = new PC();

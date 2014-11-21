@@ -199,4 +199,19 @@ function PC() {
 		//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS				
 		this.costoWattsTotal = (parseInt(this.wattsTotal)*0.00032).toFixed(4);
 	}
+    
+    //-----------------------------------------------------PRINCIPIANTE
+    PC.prototype.cargarDatosPrincipiante = function(){
+		this.costoTotal = localStorage.getItem("costoTotal");
+		this.wattsTotal = localStorage.getItem("wattsTotal");
+		this.setHoras(document.getElementsByName("horasDeUsoPrincipiante"));				
+		this.procesadorNombre = (localStorage.getItem("procesador"));
+		this.memoriaNombre = (localStorage.getItem("memoriaRam"));
+		this.discoNombre = (localStorage.getItem("discoRigido"));
+		this.fuenteNombre = (localStorage.getItem("fuente"));
+		this.placaMadreNombre = (localStorage.getItem("placaMadre"));
+		this.placaVideoNombre = (localStorage.getItem("placaVideo"));
+						
+		this.costoWattsTotal = (localStorage.getItem("costoWattsTotal"));
+	}
 }
