@@ -3,6 +3,7 @@
 <head>
 	<title>System Config Tool</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
 	<style>
 		#mainTitle{ text-align: center;}
 		#help{ font-size: 19px;}
@@ -12,23 +13,29 @@
 <body onload="controllerPCBuild.mostrarMaquina()">
 	<h1 id="mainTitle">Su selecci&oacute;n de componentes</h1>
 	<br><br>
-	<span class="help-block">Se le ofrece la siguiente configuraci&oacute;n:</span>
-		
-		<ul id="PCBuildComponentes">			
-		</ul>
-		
-	  <button class="btn btn-default" onclick="controllerPCBuild.irASystemSelector()">Volver al System Selector</button>
+	<span class="help-block">Se le ofrece la siguiente configuraci&oacute;n:</span>		
+    <ul id="PCBuildComponentes">			
+	</ul>
+	<button class="btn btn-default" onclick="controllerPCBuild.irASystemSelector()">Volver al System Selector</button>
 	<br/>
-        <span class="help-block" id="consumoWatts"></span>
-		<span class="help-block" id="gastoWatts"></span>
-        <span class="help-block" id="huellaCarbono"></span>
-		<span class="help-block" id="mensajeDeDineroInsuficiente"></span>
-		
+    <span class="help-block" id="consumoWatts"></span>
+	<span class="help-block" id="gastoWatts"></span>
+    <span class="help-block" id="huellaCarbono"></span>
+	<span class="help-block" id="mensajeDeDineroInsuficiente"></span>	
 	<script type='text/javascript' src='angular.min.js'></script>
 	<script src="js/db2.json"></script>
 	<script type='text/javascript' src='js/PCBuild.js'></script> 	
-  <script type='text/javascript' src='js/PCObject.js'></script> 	
+    <script type='text/javascript' src='js/PCObject.js'></script> 	
 	<script src="js/jquery/dist/jquery.js"></script>
+    
+    <!--CHART-->
+    
+    <div id="chart">
+		<div>
+		  <canvas id="canvas"></canvas>
+	   </div>
+    </div>
+    <script type='text/javascript' src='js/Chart.js'></script> 		
 </body>
 </html>
 

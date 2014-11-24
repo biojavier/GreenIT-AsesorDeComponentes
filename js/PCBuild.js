@@ -1,4 +1,32 @@
 var controllerPCBuild = (function (jsonDB) {
+    
+     var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+     var lineChartData = {
+        labels : ["January","February","March","April","May","June","July"],
+        datasets : [
+            {
+                label: "My First dataset",
+                fillColor : "rgba(220,220,220,0.2)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(220,220,220,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            },
+            {
+                label: "My Second dataset",
+                fillColor : "rgba(151,187,205,0.2)",
+                strokeColor : "rgba(151,187,205,1)",
+                pointColor : "rgba(151,187,205,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(151,187,205,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            }
+        ]
+    }
+
 	mostrarMaquinaPrivate = function(){
 		//esto quedara medio hardcodeado xq lo que estaria es que el 
 		//"admin" tenga una config por defecto para estos casos y la 
@@ -29,7 +57,7 @@ var controllerPCBuild = (function (jsonDB) {
             li.appendChild(document.createTextNode("Placa de video: " + mipc.placaVideoNombre));
             ul.appendChild(li);
             var li = document.createElement("li");
-            li.appendChild(document.createTextNode("Dado que el gabinete no consume energia se lo deja a eleccion del usuario (ver compatibilidad con motherboard)"));
+            li.appendChild(document.createTextNode("Como el gabinete no consume energia, queda a elección del usuario (ver compatibilidad con motherboard)"));
             ul.appendChild(li);
             var li = document.createElement("li");
             li.appendChild(document.createTextNode("Costo total: $" + parseInt(mipc.costoTotal)));
@@ -53,6 +81,12 @@ var controllerPCBuild = (function (jsonDB) {
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";
 		}
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myLine = new Chart(ctx).Line(lineChartData, {
+          responsive: true
+        });
+        console.log("hace el dibujo");
+   
 	}
 	
 	irASystemSelectorPrivate = function(){

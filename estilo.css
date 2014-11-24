@@ -1,0 +1,9 @@
+#chart{
+    margin-left: 700px;
+    margin-top: -350px;
+    width: 30%;
+}
+#canvas {
+    height: 450px;
+    width: 600px;
+}
