@@ -13,10 +13,10 @@ var controller = (function (jsonDB) {
 	
 	
 	removeOptions = function (selectbox){
-    var i;
-    for(i=selectbox.options.length-1;i>=0;i--){
+      var i;
+      for(i=selectbox.options.length-1;i>=0;i--){
         selectbox.remove(i);
-    }
+      }
 	}
 
 	//este filtro se aplica para el resto de los elementos de cada tipo(procesador, fuente, disco, etc).

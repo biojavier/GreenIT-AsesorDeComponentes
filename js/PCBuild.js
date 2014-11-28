@@ -2,7 +2,7 @@ var controllerPCBuild = (function (jsonDB) {
     
      var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
      var lineChartData = {
-        labels : ["January","February","March","April","May","June","July"],
+        labels : [],
         datasets : [
             {
                 label: "My First dataset",
@@ -12,7 +12,7 @@ var controllerPCBuild = (function (jsonDB) {
                 pointStrokeColor : "#fff",
                 pointHighlightFill : "#fff",
                 pointHighlightStroke : "rgba(220,220,220,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                data: []
             },
             {
                 label: "My Second dataset",
@@ -22,7 +22,7 @@ var controllerPCBuild = (function (jsonDB) {
                 pointStrokeColor : "#fff",
                 pointHighlightFill : "#fff",
                 pointHighlightStroke : "rgba(151,187,205,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                data: []
             }
         ]
     }
@@ -81,10 +81,18 @@ var controllerPCBuild = (function (jsonDB) {
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";
 		}
+        
+        //PARA CARGAR LA GRÁFICA    
         var ctx = document.getElementById("canvas").getContext("2d");
-        window.myLine = new Chart(ctx).Line(lineChartData, {
-          responsive: true
-        });
+        var myChart = new Chart(ctx).Line(lineChartData, {responsive: true});
+        window.myLine = myChart;
+        
+        //EN ESTE FOR HABRÍA QUE HACER LA MULTIPLICACIÓN CORRECTA PARA MOSTRAR EL CRECIMIENTO DEL CONSUMO CON EL PASO DE LOS MESES
+        for(i=0; i<8; i++){
+          myChart.addData([i, i*2], i);
+          //myChart.addData([i, i*3], i);
+        }
+        
         console.log("hace el dibujo");
    
 	}
