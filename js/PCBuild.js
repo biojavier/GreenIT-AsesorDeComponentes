@@ -1,14 +1,15 @@
 var controllerPCBuild = (function (jsonDB) {
-    
+        
      var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
      var lineChartData = {
         labels : [],
         datasets : [
+            //ATENCIÓN!!!, NO BORRAR ESTA, SI LA SACAN SE ROMPE
             {
                 label: "My First dataset",
-                fillColor : "rgba(220,220,220,0.2)",
-                strokeColor : "rgba(220,220,220,1)",
-                pointColor : "rgba(220,220,220,1)",
+                fillColor : "rgba(255, 255, 255, 0.2)",
+                strokeColor : "rgb(255, 255, 255)",
+                pointColor : "rgba(255, 255, 255, 0)",
                 pointStrokeColor : "#fff",
                 pointHighlightFill : "#fff",
                 pointHighlightStroke : "rgba(220,220,220,1)",
@@ -23,9 +24,22 @@ var controllerPCBuild = (function (jsonDB) {
                 pointHighlightFill : "#fff",
                 pointHighlightStroke : "rgba(151,187,205,1)",
                 data: []
+            },
+            //esta gráfica de aca abajo puede ser usada para dibujar la recta del consumo de una máquina que te arman en cualquier lugar.
+            //La anterior representa la del consumo de NUESTRA MÁQUINA
+            {
+                label: "My Second dataset",
+                fillColor : "rgba(151,187,205,0.2)",
+                strokeColor : "rgb(150, 240, 185)",
+                pointColor : "rgb(113, 230, 190)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(151,187,205,1)",
+                data: [1,2,3,4,10]
             }
         ]
     }
+    
 
 	mostrarMaquinaPrivate = function(){
 		//esto quedara medio hardcodeado xq lo que estaria es que el 
@@ -89,7 +103,9 @@ var controllerPCBuild = (function (jsonDB) {
         
         //EN ESTE FOR HABRÍA QUE HACER LA MULTIPLICACIÓN CORRECTA PARA MOSTRAR EL CRECIMIENTO DEL CONSUMO CON EL PASO DE LOS MESES
         for(i=0; i<8; i++){
-          myChart.addData([i, i*2], i);
+          console.log("x: " + i);
+          console.log("y: " + i*3);
+          myChart.addData([i, i*3], i);
           //myChart.addData([i, i*3], i);
         }
         
