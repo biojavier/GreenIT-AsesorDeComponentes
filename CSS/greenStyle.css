@@ -1,0 +1,23 @@
+#body {
+font-family: 'Source Sans Pro', sans-serif;
+background-image: url('../Images/eco.jpg');
+   
+    padding: 20px;
+}
+
+#footer{
+    border-radius: 12px;
+   margin-top: 10px;
+   font-family: 'Source Sans Pro', sans-serif;
+text-align: center;
+    background: rgb(124,188,10); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(124,188,10,1) 14%, rgba(128,194,23,1) 27%, rgba(161,213,79,1) 44%, rgba(157,213,58,1) 87%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(14%,rgba(124,188,10,1)), color-stop(27%,rgba(128,194,23,1)), color-stop(44%,rgba(161,213,79,1)), color-stop(87%,rgba(157,213,58,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(124,188,10,1) 14%,rgba(128,194,23,1) 27%,rgba(161,213,79,1) 44%,rgba(157,213,58,1) 87%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(124,188,10,1) 14%,rgba(128,194,23,1) 27%,rgba(161,213,79,1) 44%,rgba(157,213,58,1) 87%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(124,188,10,1) 14%,rgba(128,194,23,1) 27%,rgba(161,213,79,1) 44%,rgba(157,213,58,1) 87%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(124,188,10,1) 14%,rgba(128,194,23,1) 27%,rgba(161,213,79,1) 44%,rgba(157,213,58,1) 87%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7cbc0a', endColorstr='#9dd53a',GradientType=0 ); /* IE6-9 */
+
+
+}
