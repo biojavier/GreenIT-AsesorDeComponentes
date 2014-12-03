@@ -1,4 +1,4 @@
-var controllerPCBuild = (function (jsonDB) {
+var controllerPCBuild = (function (jsonDB, $) {
         
      var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
      var lineChartData = {
@@ -45,7 +45,7 @@ var controllerPCBuild = (function (jsonDB) {
 		//esto quedara medio hardcodeado xq lo que estaria es que el 
 		//"admin" tenga una config por defecto para estos casos y la 
 		//vaya cambiando xq que el sistema tire randoms sobre los 
-		//componentes no queda muy bien
+		//componentes no queda muy bien        
 		if(localStorage.getItem("alcanzaElDinero") == "SI"){
 				var pc = localStorage.getItem("mipc",pc);
             console.log(pc);
@@ -116,9 +116,15 @@ var controllerPCBuild = (function (jsonDB) {
 	irASystemSelectorPrivate = function(){
 		window.location = "./index.html";
 	}
+    
+    imprimir = function(){        
+        var printContents = document.getElementById("aImprimir").innerHTML;   
+        window.print(printContents);
+    }
 	
 	return{
 		mostrarMaquina:	mostrarMaquinaPrivate,
-		irASystemSelector: irASystemSelectorPrivate
+		irASystemSelector: irASystemSelectorPrivate,
+        imprimirPC: imprimir
 	}
-})(datos);
+})(datos, jQuery);
