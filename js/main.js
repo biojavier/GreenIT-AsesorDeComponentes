@@ -21,7 +21,6 @@ var controller = (function (jsonDB) {
 
 	//este filtro se aplica para el resto de los elementos de cada tipo(procesador, fuente, disco, etc).
 	filtroPrivate = function(valor){
-		console.log("cambia!!!");
 		switch(valor){
 			//en caso de que seleccione la marca del procesador
 			case 'marcaProcesador':
@@ -45,7 +44,6 @@ var controller = (function (jsonDB) {
 					var opcion3 = document.createElement("option");
 					var opcion4 = document.createElement("option");
 					if(jsonDB.producto.procesadores[i].marca == marcaSeleccionada){
-						console.log("entroo");
 						opcion2.text = opcion2.value = jsonDB.producto.procesadores[i].nucleos;
 						if(hasValue(elemDelDOM2, opcion2.text)){
 							elemDelDOM2.add(opcion2);
@@ -74,7 +72,6 @@ var controller = (function (jsonDB) {
 					var opcion3 = document.createElement("option");
 					var opcion4 = document.createElement("option");
 					if(jsonDB.producto.procesadores[i].nucleos == nucleosProcesador){
-						console.log("entroo");
 						opcion3.text = opcion3.value = jsonDB.producto.procesadores[i].velocidad;
 						if(hasValue(elemDelDOM3, opcion3.text)){
 							elemDelDOM3.add(opcion3);
@@ -124,7 +121,6 @@ var controller = (function (jsonDB) {
 					if(jsonDB.producto.procesadores[i].cache == cacheProcesador){
 						var opcion2 = document.createElement("option");
 						var opcion3 = document.createElement("option");
-						console.log("entroo");
 						opcion2.text = opcion2.value = jsonDB.producto.procesadores[i].nucleos;
 						if(hasValue(elemDelDOM2, opcion2.text)){
 							elemDelDOM2.add(opcion2);
@@ -140,7 +136,6 @@ var controller = (function (jsonDB) {
 			//en caso de que cambie la marca de la memoria ram
 			case 'marcaMemoria':
 				marcaMemoria = document.getElementById("marcaRamAdvSeleccion").value;
-				console.log("cambia marca" + marcaMemoria);
 				elemDelDOM3 = document.getElementById("cantidadMemoriaRam");	
 				elemDelDOM4 = document.getElementById("velocidadMemoriaRam");	
 				removeOptions(document.getElementById("cantidadMemoriaRam"));
@@ -320,8 +315,6 @@ var controller = (function (jsonDB) {
 						var opcion4 = document.createElement("option");
 						opcion2.text = opcion2.value = jsonDB.producto.discos[i].nombre;
 						if(hasValue(elemDelDOM2, opcion2.text)){
-							console.log("encontró marca");
-							console.log(opcion2.text);
 							elemDelDOM2.add(opcion2);
 						}						
 						opcion3.text = opcion3.value = jsonDB.producto.discos[i].capacidad;
@@ -342,9 +335,9 @@ var controller = (function (jsonDB) {
 					removeOptions(document.getElementById("wattsFuente"));
 					var i = 0;	
 					for(i=0;i<parseInt(jsonDB.producto.cantidadFuentes);i++){
-						if(jsonDB.producto.fuente[i].nombre == marcaFuente){
+                    	if(jsonDB.producto.fuentes[i].nombre == marcaFuente){
 							var opcion2 = document.createElement("option");
-							opcion2.text = opcion2.value = jsonDB.producto.fuentes[i].descripcion;
+                    		opcion2.text = opcion2.value = jsonDB.producto.fuentes[i].descripcion;
 							if(hasValue(elemDelDOM2, opcion2.text)){
 								elemDelDOM2.add(opcion2);
 							}
@@ -645,11 +638,9 @@ var controller = (function (jsonDB) {
 	}
 	
 	searchItemIntermedio = function(vectorDeItems, buscado){		
-		console.log(vectorDeItems);
 		var i=0;		
 		//si no selecciono nada...
 		if(buscado == " -- seleccionar una opción -- "){			
-			console.log(buscado);
 			return([0,0]);
 		}
 		//---------------------------
@@ -663,7 +654,6 @@ var controller = (function (jsonDB) {
 	}
 	
 	irAPCBuildPrivate = function(nivelDeDificultad){	
-		console.log(nivelDeDificultad.toString());		
 		var ndd = nivelDeDificultad.toString();
 		var usoSeleccionado="";
 		localStorage.setItem("nivelDeDificultad", ndd);
@@ -741,7 +731,6 @@ var controller = (function (jsonDB) {
 			if(ndd == "Intermedio"){
 			  var pc = new PC();
 				pc.cargarDatosIntermedio(jsonDB);
-                console.log("arma la maquina");
                 localStorage.setItem("alcanzaElDinero","SI")
 				localStorage.setItem("mipc",JSON.stringify(pc));
 			}else{
@@ -751,7 +740,6 @@ var controller = (function (jsonDB) {
 				localStorage.setItem("mipc",JSON.stringify(pc));
 			}
 		}
-		console.log("redir");
 		window.location = "./PCBuild.html";		
 	}
 	
