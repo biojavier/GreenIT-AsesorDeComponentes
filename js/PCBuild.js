@@ -42,7 +42,7 @@ var controllerPCBuild = (function (jsonDB, $) {
     
     //DATOS PARA EL GRAFICO DE BARRAS COMPARACION DE GASTOS ENERGETICOS
     var barChartData = {
-        labels: ["Consumo de una PC Estandar (Gris) VS Nuestra Recomendacion (Azul)"],
+        labels: ["PC Estandar(Gris) VS PC presentada(Azul)"],
         datasets: [
             {
                 label: "My First dataset",
@@ -117,6 +117,8 @@ var controllerPCBuild = (function (jsonDB, $) {
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";
 		}
+        
+        Chart.defaults.global.scaleFontSize = 18;
         
         //PARA CARGAR LA GRÁFICA    
         var ctx = document.getElementById("canvas").getContext("2d");
