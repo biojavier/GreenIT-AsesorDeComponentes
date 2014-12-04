@@ -40,6 +40,28 @@ var controllerPCBuild = (function (jsonDB, $) {
         ]
     }
     
+    //DATOS PARA EL GRAFICO DE BARRAS COMPARACION DE GASTOS ENERGETICOS
+    var barChartData = {
+        labels: ["Consumo de una PC Estandar (Gris) VS Nuestra Recomendacion (Azul)"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: [0]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(151,187,205,0.5)",
+                strokeColor: "rgba(151,187,205,0.8)",
+                highlightFill: "rgba(151,187,205,0.75)",
+                highlightStroke: "rgba(151,187,205,1)",
+                data: [0]
+            }
+        ]
+    }
 
 	mostrarMaquinaPrivate = function(){
 		//esto quedara medio hardcodeado xq lo que estaria es que el 
@@ -71,7 +93,7 @@ var controllerPCBuild = (function (jsonDB, $) {
             li.appendChild(document.createTextNode("Placa de video: " + mipc.placaVideoNombre));
             ul.appendChild(li);
             var li = document.createElement("li");
-            li.appendChild(document.createTextNode("Como el gabinete no consume energia, queda a elección del usuario (ver compatibilidad con motherboard)"));
+            li.appendChild(document.createTextNode("Como el gabinete no consume energia, queda a eleccion del usuario (ver compatibilidad con motherboard)"));
             ul.appendChild(li);
             var li = document.createElement("li");
             li.appendChild(document.createTextNode("Costo total: $" + parseInt(mipc.costoTotal)));
@@ -85,7 +107,7 @@ var controllerPCBuild = (function (jsonDB, $) {
 			document.getElementById("gastoWatts").innerHTML = "El gasto monetario en base al consumo de energia de la PC mostrada es de: $" + mipc.costoWattsTotal + " por hora";
             //la formula es:watts consumidos x año * (0,5/1000)
             //0,00 xq sino me imprime desde el primer numero distinto de 0
-            document.getElementById("huellaCarbono").innerHTML = "La huella de carbono generada por esta máquina es: CO2 0,00" + (mipc.wattsTotal*0,0005);
+            document.getElementById("huellaCarbono").innerHTML = "La huella de carbono generada por esta maquina es: CO2 0,00" + (mipc.wattsTotal*0,0005);
             var result = ((mipc.wattsTotal)*parseFloat(0,0005));
             console.log(result.toFixed());
             console.log(result.toExponential());
@@ -108,7 +130,21 @@ var controllerPCBuild = (function (jsonDB, $) {
           myChart.addData([i, i*3], i);
           //myChart.addData([i, i*3], i);
         }
+            
+        //PARA CARGAR LA GRÁFICA DE BARRAS PARA LA COMPARACION DE CONSUMO   
+        //numero de consumo de la pc promedio
+        var consumoPCpromedio = 270;
+        var consumoPCarmada = mipc.wattsTotal;        
+        barChartData.datasets[0].data = [consumoPCpromedio];
+        barChartData.datasets[1].data = [consumoPCarmada];
         
+        
+        var ctx2 = document.getElementById("canvas2").getContext("2d");        
+        var myBarChart = new Chart(ctx2).Bar(barChartData, {responsive: true});
+        window.myLine = myBarChart;
+        
+        
+                
         console.log("hace el dibujo");
    
 	}

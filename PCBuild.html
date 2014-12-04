@@ -4,10 +4,11 @@
 	<title>System Config Tool</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="estilo.css">
-	<style>
-		#mainTitle{ text-align: center;}
+	<style>		
+        #mainTitle{ text-align: center;}
 		#help{ font-size: 19px;}
-        
+        #canvas{ max-height: 400px; max-width: 750px; }
+        #canvas2{ max-height: 400px; max-width: 750px; }
 	</style>
 
 </head>
@@ -34,6 +35,8 @@
     <br/><span>Grafica de Consumo/Tiempo???</span>
     <br>
     <canvas id="canvas"></canvas>
+    <br><br>
+    <canvas id="canvas2"></canvas>
   
 	<br><br><br>      
     <button class="btn btn-default" onclick="controllerPCBuild.irASystemSelector()">Volver al System Selector</button>
