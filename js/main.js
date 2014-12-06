@@ -679,10 +679,22 @@ var controller = (function (jsonDB) {
 			costo += vec[0];	
 			totalWatts += vec[1];
 			
-			vec = searchItem(parseInt(jsonDB.producto.cantidadFuentes),
-				jsonDB.producto.fuentes, usoSeleccionado, "fuente", "");	
-			costo += vec[0];
-			totalWatts += vec[1];
+			var checkb = document.getElementById("pretendoActualizarAFuturo");
+            if(checkb.checked){
+                //buscamos los producto marcados como actializacion+usoRecomendado 
+                actualizacionUso = "actualizacion" + usoSeleccionado;
+                console.log("uso actualizado: "+actualizacionUso);
+                alert(actualizacionUso);
+                vec = searchItem(parseInt(jsonDB.producto.cantidadFuentes),
+                    jsonDB.producto.fuentes, actualizacionUso, "fuente", "");	
+                costo += vec[0];
+                totalWatts += vec[1];
+            }else{            
+                vec = searchItem(parseInt(jsonDB.producto.cantidadFuentes),
+                    jsonDB.producto.fuentes, usoSeleccionado, "fuente", "");	
+                costo += vec[0];
+                totalWatts += vec[1];
+            }
 			
 			vec = searchItem(parseInt(jsonDB.producto.cantidadMemoriasRam),
 				jsonDB.producto.memoriasRam, usoSeleccionado, "memoriaRam", "");	

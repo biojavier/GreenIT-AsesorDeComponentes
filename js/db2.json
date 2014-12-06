@@ -10,13 +10,17 @@ var datos = {
 			{"nombre":"WESTERN DIGITAL CAVIAR BLACK", "consumo":"6.8", "capacidad":"1 TB", "tipo":"SATA 3", "cache":"64 MB", "sugerido":"juegos", "precio":"1689"},
 			{"nombre":"SAMSUNG 840 PRO SSD", "consumo":"1.4", "capacidad":"256 GB", "tipo":"SATA 3", "cache":"64 MB", "sugerido":"diseño", "precio":"3100"}
 		],
-		"cantidadFuentes":"5",
+		"cantidadFuentes":"9",
 		"fuentes": [
 			{"nombre":"ANTEC VP450P", "consumo":"10", "descripcion":"450W", "sugerido":"oficina", "precio":"806"},
 			{"nombre":"COOLER MASTER EXTREME POWER PLUS", "consumo":"10", "descripcion":"600W", "sugerido":"null", "precio":"1499"},
 			{"nombre":"COOLER MASTER EXTREME POWER PLUS 550", "consumo":"10", "descripcion":"550W", "sugerido":"hogar", "precio":"1300"},
 			{"nombre":"NZXT HALE82 550", "consumo":"10", "descripcion":"550W", "sugerido":"diseño", "precio":"1650"},
-			{"nombre":"CORSAIR CX600M", "consumo":"10", "descripcion":"600W", "sugerido":"juegos", "precio":"1750"}
+			{"nombre":"CORSAIR CX600 Modular", "consumo":"10", "descripcion":"600W", "sugerido":"juegos", "precio":"1750"},
+            {"nombre":"SEASONIC S12-2 520W", "consumo":"10", "descripcion":"520W", "sugerido":"actualizacionoficina", "precio":"1500"},
+            {"nombre":"SEASONIC M12-2 620W", "consumo":"10", "descripcion":"620W", "sugerido":"actualizaciondiseño", "precio":"1800"},
+            {"nombre":"SEASONIC M12-2 750W", "consumo":"10", "descripcion":"750W", "sugerido":"actualizacionjuegos", "precio":"2275"},
+            {"nombre":"CORSAIR CX600M", "consumo":"10", "descripcion":"600W", "sugerido":"actualizacionhogar", "precio":"1750"}
 		],
 		"cantidadMemoriasRam":"4",
 		"memoriasRam": [
