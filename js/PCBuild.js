@@ -114,31 +114,32 @@ var controllerPCBuild = (function (jsonDB, $) {
             console.log(parseFloat(0,0005));
             console.log(0,0005);
             console.log(120*0,0005);
+            
+            Chart.defaults.global.scaleFontSize = 18;
+
+            //PARA CARGAR LA GRÁFICA    
+            var ctx = document.getElementById("canvas").getContext("2d");
+            var myChart = new Chart(ctx).Line(lineChartData, {responsive: true});
+            window.myLine = myChart;
+
+            //EN ESTE FOR HABRÍA QUE HACER LA MULTIPLICACIÓN CORRECTA PARA MOSTRAR EL CRECIMIENTO DEL CONSUMO CON EL PASO DE LOS MESES
+            var tot = 0;
+            for(i=0; i<8; i++){
+              myChart.addData([i, tot], i);
+              tot += mipc.wattsTotal;
+              //myChart.addData([i, i*3], i);
+            }
+
+            //PARA CARGAR LA GRÁFICA DE BARRAS PARA LA COMPARACION DE CONSUMO   
+            //numero de consumo de la pc promedio
+            var consumoPCpromedio = 270;
+            var consumoPCarmada = mipc.wattsTotal;        
+            barChartData.datasets[0].data = [consumoPCpromedio];
+            barChartData.datasets[1].data = [consumoPCarmada];
+            
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";
 		}
-        
-        Chart.defaults.global.scaleFontSize = 18;
-        
-        //PARA CARGAR LA GRÁFICA    
-        var ctx = document.getElementById("canvas").getContext("2d");
-        var myChart = new Chart(ctx).Line(lineChartData, {responsive: true});
-        window.myLine = myChart;
-        
-        //EN ESTE FOR HABRÍA QUE HACER LA MULTIPLICACIÓN CORRECTA PARA MOSTRAR EL CRECIMIENTO DEL CONSUMO CON EL PASO DE LOS MESES
-        for(i=0; i<8; i++){
-          console.log("x: " + i);
-          console.log("y: " + i*3);
-          myChart.addData([i, i*3], i);
-          //myChart.addData([i, i*3], i);
-        }
-            
-        //PARA CARGAR LA GRÁFICA DE BARRAS PARA LA COMPARACION DE CONSUMO   
-        //numero de consumo de la pc promedio
-        var consumoPCpromedio = 270;
-        var consumoPCarmada = mipc.wattsTotal;        
-        barChartData.datasets[0].data = [consumoPCpromedio];
-        barChartData.datasets[1].data = [consumoPCarmada];
         
         
         var ctx2 = document.getElementById("canvas2").getContext("2d");        
