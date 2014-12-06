@@ -45,9 +45,38 @@ function PC() {
 	PC.prototype.setProcesador = function(marca, jsonDB){
 	 	var i=0;
 		encuentra=false;
+        console.log("busca procesador  ");
+        console.log(marca);
 		while(!encuentra && i<parseInt(jsonDB.producto.cantidadProcesadores)){
+            console.log("itera procesador");
+            console.log("ACUTAL:" + jsonDB.producto.procesadores[i].nombre);
 			if(jsonDB.producto.procesadores[i].nombre == marca){
+                console.log("encuentra procesador");
 				encuentra=true;
+				this.procesadorNombre = jsonDB.producto.procesadores[i].nombre;
+				this.procesadorConsumo = jsonDB.producto.procesadores[i].consumo;
+				this.procesadorNucleos = jsonDB.producto.procesadores[i].nucleos;
+				this.procesadorVelocidad = jsonDB.producto.procesadores[i].velocidad;
+				this.procesadorCache = jsonDB.producto.procesadores[i].cache;
+				this.procesadorPrecio = jsonDB.producto.procesadores[i].precio;
+				this.costoTotal += parseInt(jsonDB.producto.procesadores[i].precio);
+				this.wattsTotal += parseInt(jsonDB.producto.procesadores[i].consumo);
+			}else{
+				i++;
+			}
+			console.log(this.costoTotal);			
+		};
+	}
+    
+    PC.prototype.setProcesadorAvanzado = function(marca, tagNucleos, tagVelocidad, tagCache, jsonDB){
+	 	var i=0;
+		encuentra=false;              
+        nucleos = document.getElementById(tagNucleos).value;
+        velocidad = document.getElementById(tagVelocidad).value;
+        cache = document.getElementById(tagCache).value;
+ 		while(!encuentra && i<parseInt(jsonDB.producto.cantidadProcesadores)){
+ 			if(jsonDB.producto.procesadores[i].marca == marca && jsonDB.producto.procesadores[i].nucleos == nucleos && jsonDB.producto.procesadores[i].velocidad == velocidad && jsonDB.producto.procesadores[i].cache == cache){
+ 				encuentra=true;
 				this.procesadorNombre = jsonDB.producto.procesadores[i].nombre;
 				this.procesadorConsumo = jsonDB.producto.procesadores[i].consumo;
 				this.procesadorNucleos = jsonDB.producto.procesadores[i].nucleos;
@@ -153,6 +182,10 @@ function PC() {
 				i++;
 			}			
 		}
+        if(!encuentra){
+            this.placaVideoNombre = "NO SE ELIGÍO PLACA DE VIDEO"
+        }
+        
 	};
 
 	PC.prototype.setHoras = function(horas){
@@ -189,7 +222,8 @@ function PC() {
 				marcaSeleccionada = marcas[i].value;
 			}
 		}	
-		this.setProcesador("marcaSeleccion", jsonDB);
+        
+		this.setProcesadorAvanzado(marcaSeleccionada, "nucleosProcesador", "velocidadProcesador", "cacheProcesador", jsonDB);
 		this.setMemoria("marcaRamAdvSeleccion", jsonDB);
 		this.setDisco("marcaDisco", jsonDB);
 		this.setFuente("marcaFuente", jsonDB);
@@ -210,8 +244,7 @@ function PC() {
 		this.discoNombre = (localStorage.getItem("discoRigido"));
 		this.fuenteNombre = (localStorage.getItem("fuente"));
 		this.placaMadreNombre = (localStorage.getItem("placaMadre"));
-		this.placaVideoNombre = (localStorage.getItem("placaVideo"));
-						
+		this.placaVideoNombre = (localStorage.getItem("placaVideo"));					
 		this.costoWattsTotal = (localStorage.getItem("costoWattsTotal"));
 	}
 }
