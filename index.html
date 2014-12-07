@@ -130,10 +130,11 @@
 			</form>
 		</div>	
 		
+     
 		<div class="form-group" ng-show="tab === 3">
+            <form>
 			<!-- FORMULARIO PARA EL USUARIO AVANZADO -->
-			<form>
-				<h3>Características del equipo</h3>
+   				<h3>Características del equipo</h3>
 				<label for="marcaSeleccion">
 					Marca del procesador
 				<div id="marcProcesador" onchange="controller.filtro('marcaProcesador')">
@@ -147,7 +148,8 @@
 							AMD
 					</label><br/><br/>
 				</div>
-				<label for="nucleosProcesador"> Cantidad de nucleos </label><br/>
+               
+				<label for="nucleosProcesador"> Cantidad de n&uacute;cleos </label><br/>
 					<select class="form-control" id="nucleosProcesador" onchange="controller.filtro('cantidadNucleos')">					
 						<option disabled selected>Seleccionar una opci&oacute;n</option>
 					</select>

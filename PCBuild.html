@@ -3,14 +3,18 @@
 <head>
 	<title>System Config Tool</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" type="text/css" href="estilo.css">
 	<style>		
         #mainTitle{ text-align: center;}
 		#help{ font-size: 19px;}
         
 	</style>
-
+  <link rel="stylesheet" type="text/css" href="CSS/greenStyle.css">
 </head>
+<div id="body">
+ <div id="main">   
 <body onload="controllerPCBuild.mostrarMaquina()">
   <div id="aImprimir">
     <h1 id="mainTitle">Su selecci&oacute;n de componentes</h1>
@@ -33,11 +37,14 @@
     <script type='text/javascript' src='js/PCObject.js'></script> 	
   </div>  
     <!--CHART-->
+     
     <br/><span>Grafica de Consumo/Mes</span>
     <br/>
     La l&iacute;nea verde representa el consumo de una m&aacute;quina estandar y la linea azul representa el consumo de la m&aacute;quina que el sistema genera
     <br/>
     <br/>
+    </div>
+    </div>
     <canvas id="canvas"></canvas>
     <br>
     <span id="tituloGraficoDeBarras" >Grafica de comparacion de consumos entre una PC estandar y nuestra recomendacion</span>
@@ -48,7 +55,15 @@
     <button class="btn btn-default" onclick="controllerPCBuild.irASystemSelector()">Volver al System Selector</button>
     <button class="btn btn-default" onclick="controllerPCBuild.imprimirPC()">Imprimir Datos</button>
     <br><br>
-    
+   
+     <div id="footer"><a href="http://www.info.unlp.edu.ar"><img width="120" height="120" src="Images/frente.jpg" alt="Enlace a UNLP"></a>
+                     <a href="http://www.coolermaster.com/main/"><img width="120" height="120" src="Images/cool.jpg" alt="Enlace a CoolerMaster"></a>
+                     <a href=" http://www.topower.com"><img width="120" height="120" src="Images/topower_logo.jpg" alt="Enlace a Topower"></a>
+                     <a href="http://www.intel.la/content/www/xl/es/homepage.html"><img width="120" height="120" src="Images/intel.png" alt="Enlace a Intel"></a>
+                     <a href="http://www.amd.com/es-xl"><img width="120" height="120" src="Images/amd.jpg" alt="Enlace a AMD"></a>
+
+        <h3>Facultad de Inform&aacute;tica UNLP</h3>
+    </div>
     <script type='text/javascript' src='js/Chart.js'></script> 		
 </body>
 </html>
