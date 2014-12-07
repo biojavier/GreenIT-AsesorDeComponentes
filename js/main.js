@@ -683,8 +683,7 @@ var controller = (function (jsonDB) {
             if(checkb.checked){
                 //buscamos los producto marcados como actializacion+usoRecomendado 
                 actualizacionUso = "actualizacion" + usoSeleccionado;
-                console.log("uso actualizado: "+actualizacionUso);
-                alert(actualizacionUso);
+                console.log("uso actualizado: "+actualizacionUso);                
                 vec = searchItem(parseInt(jsonDB.producto.cantidadFuentes),
                     jsonDB.producto.fuentes, actualizacionUso, "fuente", "");	
                 costo += vec[0];

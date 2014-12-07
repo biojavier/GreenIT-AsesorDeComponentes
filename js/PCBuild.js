@@ -42,7 +42,7 @@ var controllerPCBuild = (function (jsonDB, $) {
     
     //DATOS PARA EL GRAFICO DE BARRAS COMPARACION DE GASTOS ENERGETICOS
     var barChartData = {
-        labels: ["PC Estandar(Gris) VS PC presentada(Azul)"],
+        labels: ["PC estandar(Gris) VS PC presentada(Azul)"],
         datasets: [
             {
                 label: "My First dataset",
@@ -105,7 +105,12 @@ var controllerPCBuild = (function (jsonDB, $) {
             
 	        document.getElementById("consumoWatts").innerHTML = "El consumo de energia de la PC mostrada es de: " + parseInt(mipc.wattsTotal) + " watts";		
 			document.getElementById("gastoWatts").innerHTML = "El gasto monetario en base al consumo de energia de la PC mostrada es de: $" + mipc.costoWattsTotal + " por hora";
-            //la formula es:watts consumidos x año * (0,5/1000)
+            document.getElementById("gastoWattsMaquinaEstandar").innerHTML = "El gasto monetario en base al consumo de energia de una PC estandar es de: $" + 270*0.00032 + " por hora";
+			var ahorro = ((270*0.00032) - mipc.costoWattsTotal);			
+			if(ahorro > 0){
+				document.getElementById("gastoWattsAhorro").innerHTML = "Por lo tanto usted ahorra: " + ahorro.toFixed(4) + " por hora";
+			}			
+			//la formula es:watts consumidos x año * (0,5/1000)
             //0,00 xq sino me imprime desde el primer numero distinto de 0
             document.getElementById("huellaCarbono").innerHTML = "La huella de carbono generada por esta maquina es: CO2 0,00" + (mipc.wattsTotal*0,0005);
             var result = ((mipc.wattsTotal)*parseFloat(0,0005));
@@ -135,10 +140,15 @@ var controllerPCBuild = (function (jsonDB, $) {
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";
 		}        
-        var ctx2 = document.getElementById("canvas2").getContext("2d");        
-        var myBarChart = new Chart(ctx2).Bar(barChartData, {responsive: true});
-        window.myLine = myBarChart;
-	}
+        if(parseInt(mipc.wattsTotal) < 270){
+            var ctx2 = document.getElementById("canvas2").getContext("2d");        
+            var myBarChart = new Chart(ctx2).Bar(barChartData, {responsive: true});
+            window.myLine = myBarChart;
+            
+        }else{
+            document.getElementById("tituloGraficoDeBarras").innerHTML = "";
+        }
+    }
 	
 	irASystemSelectorPrivate = function(){
 		window.location = "./index.html";

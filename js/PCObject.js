@@ -198,8 +198,8 @@ function PC() {
 		this.setPlacaVideo("placaVideoSeleccion", jsonDB);
 		//------- TOMAMOS EL COSTO DEL KILOWATT HORA EN 0.32 CENTAVOS DE PESO
 		//------- POR LO TANTO 0.32/1000 NOS DA UN COSTO DE WATT DE 0.00032 CENTAVOS				
-		alert("watts total "+this.wattsTotal);
-		alert("watts total por 0.32 "+(this.wattsTotal*0.00032).toFixed(4));
+		//alert("watts total "+this.wattsTotal);
+		//alert("watts total por 0.32 "+(this.wattsTotal*0.00032).toFixed(4));
 		this.costoWattsTotal = ((this.wattsTotal)*0.00032).toFixed(4);
   }		
 	
