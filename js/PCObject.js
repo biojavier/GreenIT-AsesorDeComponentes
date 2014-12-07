@@ -45,14 +45,9 @@ function PC() {
 	PC.prototype.setProcesador = function(marca, jsonDB){
 	 	var i=0;
 		encuentra=false;
-        console.log("busca procesador  ");
-        console.log(marca);
-		while(!encuentra && i<parseInt(jsonDB.producto.cantidadProcesadores)){
-            console.log("itera procesador");
-            console.log("ACUTAL:" + jsonDB.producto.procesadores[i].nombre);
-			if(jsonDB.producto.procesadores[i].nombre == marca){
-                console.log("encuentra procesador");
-				encuentra=true;
+        while(!encuentra && i<parseInt(jsonDB.producto.cantidadProcesadores)){
+        	if(jsonDB.producto.procesadores[i].nombre == marca){
+        		encuentra=true;
 				this.procesadorNombre = jsonDB.producto.procesadores[i].nombre;
 				this.procesadorConsumo = jsonDB.producto.procesadores[i].consumo;
 				this.procesadorNucleos = jsonDB.producto.procesadores[i].nucleos;
@@ -64,7 +59,6 @@ function PC() {
 			}else{
 				i++;
 			}
-			console.log(this.costoTotal);			
 		};
 	}
     
@@ -87,8 +81,7 @@ function PC() {
 				this.wattsTotal += parseInt(jsonDB.producto.procesadores[i].consumo);
 			}else{
 				i++;
-			}
-			console.log(this.costoTotal);			
+			}		
 		};
 	}
 	
@@ -107,8 +100,7 @@ function PC() {
 				this.wattsTotal += parseInt(jsonDB.producto.memoriasRam[i].consumo);
 			}else{
 				i++;
-			}			
-			console.log(this.costoTotal);			
+			}					
 		}
 	}
 	
@@ -129,7 +121,6 @@ function PC() {
 			}else{
 				i++;
 			}			
-			console.log(this.costoTotal);			
 		}
 	};
 	PC.prototype.setFuente = function(tagId, jsonDB){

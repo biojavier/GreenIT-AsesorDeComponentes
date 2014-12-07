@@ -35,7 +35,7 @@ var controllerPCBuild = (function (jsonDB, $) {
                 pointStrokeColor : "#fff",
                 pointHighlightFill : "#fff",
                 pointHighlightStroke : "rgba(151,187,205,1)",
-                data: [1,2,3,4,10]
+                data: [3*1, 4*1.5, 5*2, 6*2.5, 7*3, 8*3.5, 9*4, 10*4.5]
             }
         ]
     }
@@ -121,13 +121,8 @@ var controllerPCBuild = (function (jsonDB, $) {
             var ctx = document.getElementById("canvas").getContext("2d");
             var myChart = new Chart(ctx).Line(lineChartData, {responsive: true});
             window.myLine = myChart;
-
-            //EN ESTE FOR HABRÍA QUE HACER LA MULTIPLICACIÓN CORRECTA PARA MOSTRAR EL CRECIMIENTO DEL CONSUMO CON EL PASO DE LOS MESES
-            var tot = 0;
             for(i=0; i<8; i++){
-              myChart.addData([i, tot], i);
-              tot += mipc.wattsTotal;
-              //myChart.addData([i, i*3], i);
+              myChart.addData([i, i*3], i);
             }
 
             //PARA CARGAR LA GRÁFICA DE BARRAS PARA LA COMPARACION DE CONSUMO   
@@ -139,17 +134,10 @@ var controllerPCBuild = (function (jsonDB, $) {
             
 		}else{
 			document.getElementById("mensajeDeDineroInsuficiente").innerHTML = "En este momento el sistema no dispone de una configuracion de componentes para el uso seleccionado en el rango de precios elegido. Disculpe las molestias";
-		}
-        
-        
+		}        
         var ctx2 = document.getElementById("canvas2").getContext("2d");        
         var myBarChart = new Chart(ctx2).Bar(barChartData, {responsive: true});
         window.myLine = myBarChart;
-        
-        
-                
-        console.log("hace el dibujo");
-   
 	}
 	
 	irASystemSelectorPrivate = function(){
